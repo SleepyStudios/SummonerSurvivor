@@ -13,6 +13,10 @@ func _process(_delta: float) -> void:
 	if not ready_to_explode and position.distance_to(player.position) <= EXPLODE_TRIGGER_DISTANCE:
 			sprite.play("blinking")
 			ready_to_explode = true
+	if velocity.x > 0:
+			sprite.flip_h = true
+	else:
+			sprite.flip_h = false
 
 func _on_boom_timer_timeout() -> void:
 	sprite.play("exploding")
