@@ -29,6 +29,9 @@ func get_input() -> void:
 	velocity = input_direction * speed
 
 	if can_dash and Input.is_action_just_pressed("dash"):
+		# exclude layer 3
+		collision_layer &= ~(1 << 2)
+
 		speed = DASH_SPEED
 		can_dash = false
 		dash_timer.start()
@@ -38,6 +41,9 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _on_dash_timer_timeout() -> void:
+	# include layer 3
+	collision_layer |= 1 << 2
+
 	speed = BASE_SPEED
 	dash_cooldown_timer.start()
 
