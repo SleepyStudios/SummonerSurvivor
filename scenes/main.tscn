@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://divr04l50vppw"]
+[gd_scene load_steps=9 format=3 uid="uid://divr04l50vppw"]
 
 [ext_resource type="Texture2D" uid="uid://dgstkdk67p5ns" path="res://assets/bg.png" id="1_2ejo1"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_6afyc"]
 [ext_resource type="Texture2D" uid="uid://doyux5qiw0nid" path="res://icon.svg" id="2_jujlo"]
+[ext_resource type="Script" path="res://scripts/monuments_spawner.gd" id="3_loki5"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="4_d5jgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fotqp"]
@@ -53,7 +54,8 @@ script = ExtResource("4_d5jgv")
 [node name="Timer" type="Timer" parent="Spawner"]
 autostart = true
 
-[node name="Creatures" type="Node2D" parent="."]
+[node name="Monuments" type="Node2D" parent="."]
+script = ExtResource("3_loki5")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 collision_layer = 5
@@ -65,7 +67,7 @@ scale = Vector2(0.5, 0.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_2bw7l")
 
-[node name="Sprite" type="Sprite2D" parent="Player"]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_jujlo")
 

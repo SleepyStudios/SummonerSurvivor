@@ -1,5 +1,8 @@
-extends CharacterBody2D
+class_name Creature extends CharacterBody2D
 
+@export var soul_key: String
+@export var souls_required: int
+@export var kill_points: int
 @onready var player: CharacterBody2D = $"../../Player"
 
 var speed = 250.0

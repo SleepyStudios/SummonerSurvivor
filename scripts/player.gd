@@ -10,6 +10,7 @@ var can_dash = true
 @onready var dash_timer: Timer = $"DashTimer"
 @onready var dash_cooldown_timer: Timer = $"DashCooldownTimer"
 @onready var bg: Sprite2D = $"../BG"
+@onready var monuments_spawner: MonumentsSpawner = $"../Monuments"
 
 func _ready() -> void:
 	var rect: Rect2 = bg.get_rect()
@@ -19,6 +20,7 @@ func _ready() -> void:
 	cam.limit_left = rect.position.x
 	cam.limit_right = rect.position.x + rect.size.x
 	cam.limit_smoothed = true
+	monuments_spawner.spawn()
 
 func get_input() -> void:
 	var input_direction = Input.get_vector("left", "right", "up", "down")

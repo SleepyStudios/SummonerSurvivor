@@ -19,7 +19,6 @@ var patterns: Array = [
   }
 ]
 
-@onready var creatures = $"../Creatures"
 @onready var cam: Camera2D = $"../Player/Camera2D"
 
 var time: int = 0
@@ -52,4 +51,4 @@ func spawn(pattern: Dictionary) -> void:
 
   var enemy = pattern.scene.instantiate()
   enemy.position = rand_pos
-  creatures.add_child(enemy)
+  add_child(enemy)
