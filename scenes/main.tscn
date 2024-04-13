@@ -56,6 +56,7 @@ autostart = true
 [node name="Creatures" type="Node2D" parent="."]
 
 [node name="Player" type="CharacterBody2D" parent="."]
+collision_layer = 5
 script = ExtResource("2_6afyc")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -68,4 +69,14 @@ shape = SubResource("RectangleShape2D_2bw7l")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_jujlo")
 
+[node name="DashTimer" type="Timer" parent="Player"]
+wait_time = 0.1
+one_shot = true
+
+[node name="DashCooldownTimer" type="Timer" parent="Player"]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="Player/DashTimer" to="Player" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="Player/DashCooldownTimer" to="Player" method="_on_dash_cooldown_timer_timeout"]
