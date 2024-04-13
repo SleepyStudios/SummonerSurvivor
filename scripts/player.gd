@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 const BASE_SPEED = 300.0
 const DASH_SPEED = 1500.0
@@ -11,8 +11,9 @@ const DASH_SPEED = 1500.0
 
 var speed = BASE_SPEED
 var can_dash = true
-var souls = 0
+var souls = 5
 var health = 10
+var max_soul_capacity = 10
 
 func _ready() -> void:
 	var rect: Rect2 = bg.get_rect()
@@ -29,9 +30,6 @@ func get_input() -> void:
 	velocity = input_direction * speed
 
 	if can_dash and Input.is_action_just_pressed("dash"):
-		# exclude layer 3
-		collision_layer &= ~(1 << 2)
-
 		speed = DASH_SPEED
 		can_dash = false
 		dash_timer.start()
@@ -41,9 +39,6 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _on_dash_timer_timeout() -> void:
-	# include layer 3
-	collision_layer |= 1 << 2
-
 	speed = BASE_SPEED
 	dash_cooldown_timer.start()
 
@@ -57,3 +52,11 @@ func on_hit() -> void:
 func on_pickup_soul() -> void:
 	souls += 1
 	print("new souls: %s" % [souls])
+
+func on_upgrade_soul_capacity(requirement: int) -> void:
+	souls -= requirement
+	max_soul_capacity += 10
+	print("upgraded soul capacity to: %s" % [max_soul_capacity])
+
+func can_pickup_souls() -> bool:
+	return souls < max_soul_capacity

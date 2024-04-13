@@ -3,7 +3,7 @@ class_name Creature extends CharacterBody2D
 @export var kill_points: int
 @export var speed = 250.0
 
-@onready var player: CharacterBody2D = $"../../Player"
+@onready var player: Player = $"../../Player"
 
 var soul_pickup = preload ("res://scenes/soul_pickup.tscn")
 
