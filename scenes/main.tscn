@@ -60,6 +60,7 @@ script = ExtResource("3_loki5")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 collision_layer = 5
+motion_mode = 1
 script = ExtResource("2_6afyc")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
