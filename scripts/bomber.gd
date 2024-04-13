@@ -1,6 +1,7 @@
 extends Creature
 
-const EXPLODE_TRIGGER_DISTANCE = 80
+const EXPLODE_TRIGGER_DISTANCE = 150
+
 
 @onready var sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 @onready var boom_timer: Timer = $"BoomTimer"

@@ -28,7 +28,7 @@ func get_input() -> void:
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
 
-	if can_dash and Input.is_action_just_released("dash"):
+	if can_dash and Input.is_action_just_pressed("dash"):
 		speed = DASH_SPEED
 		can_dash = false
 		dash_timer.start()

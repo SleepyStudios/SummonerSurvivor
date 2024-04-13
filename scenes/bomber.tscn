@@ -145,7 +145,6 @@ radius = 128.0
 position = Vector2(80, 80)
 collision_layer = 2
 collision_mask = 6
-motion_mode = 1
 script = ExtResource("1_oushq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -161,6 +160,7 @@ animation = &"exploding"
 autoplay = "default"
 
 [node name="BoomTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="ExplosionArea" type="Area2D" parent="."]
