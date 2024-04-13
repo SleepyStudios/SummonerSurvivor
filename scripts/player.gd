@@ -3,14 +3,16 @@ extends CharacterBody2D
 const BASE_SPEED = 300.0
 const DASH_SPEED = 1500.0
 
-var speed = BASE_SPEED
-var can_dash = true
-
 @onready var cam: Camera2D = $"Camera2D"
 @onready var dash_timer: Timer = $"DashTimer"
 @onready var dash_cooldown_timer: Timer = $"DashCooldownTimer"
 @onready var bg: Sprite2D = $"../BG"
 @onready var monuments_spawner: MonumentsSpawner = $"../Monuments"
+
+var speed = BASE_SPEED
+var can_dash = true
+var souls = 0
+var health = 10
 
 func _ready() -> void:
 	var rect: Rect2 = bg.get_rect()
@@ -41,3 +43,11 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_dash_cooldown_timer_timeout() -> void:
 	can_dash = true
+
+func on_hit() -> void:
+	health -= 1
+	print("new health: %s" % [health])
+
+func on_pickup_soul() -> void:
+	souls += 1
+	print("new souls: %s" % [souls])

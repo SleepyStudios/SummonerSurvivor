@@ -8,13 +8,13 @@ enum SPAWN_POSITION {
   RIGHT
 }
 
-var bob = preload ("res://scenes/bob.tscn")
+var bomber = preload ("res://scenes/bomber.tscn")
 var patterns: Array = [
   {
-    "scene": bob,
+    "scene": bomber,
     "amount": 1,
     "start": 1,
-    "rate": 3,
+    "rate": 2,
     "end": 30
   }
 ]

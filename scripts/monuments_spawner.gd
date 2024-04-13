@@ -2,7 +2,6 @@ class_name MonumentsSpawner extends Node2D
 
 const SPAWN_OFFSET = 96
 const SPAWN_BOUNDARY = 196
-const SOUL_KEYS = ["bob", "yip"]
 
 @onready var cam: Camera2D = $"../Player/Camera2D"
 var scene = preload ("res://scenes/monument.tscn")
@@ -10,7 +9,7 @@ var scene = preload ("res://scenes/monument.tscn")
 func spawn() -> void:
   var rng = RandomNumberGenerator.new()
 
-  for soul_key in SOUL_KEYS:
+  for i in 3:
     var spawned = false
     while not spawned:
       var rand_pos = Vector2(
@@ -24,6 +23,5 @@ func spawn() -> void:
       if not nodes_to_check.any(func (node: Node2D): return node.position.distance_to(rand_pos) <= SPAWN_BOUNDARY):
         var monument = scene.instantiate()
         monument.position = rand_pos
-        monument.soul_key = soul_key
         add_child(monument)
         spawned = true
