@@ -141,6 +141,7 @@ z_index = 999
 script = ExtResource("6_lhuss")
 
 [node name="SummonTurret" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
+position = Vector2(-60, -103.923)
 creature_icon = ExtResource("8_cn56n")
 
 [node name="SummonBomber" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
@@ -213,17 +214,25 @@ offset_bottom = 22.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="GameOverLabel" type="Label" parent="UI/DeathUI/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_t471f")
+theme_override_font_sizes/font_size = 48
+text = "GAME OVER"
+horizontal_alignment = 1
+
 [node name="ScoreLabel" type="Label" parent="UI/DeathUI/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("7_t471f")
-text = "Score
-"
+theme_override_font_sizes/font_size = 96
+text = "120 PTS"
 horizontal_alignment = 1
 
 [node name="RestartLabel" type="Label" parent="UI/DeathUI/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("7_t471f")
-text = "It's over, press [R] to restart"
+theme_override_font_sizes/font_size = 48
+text = "PRESS [R] TO RESTART"
 horizontal_alignment = 1
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]

@@ -14,7 +14,7 @@ func on_player_death():
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if player.dead:
 		death_ui.visible = true
-		score_label.text = "Score: %s" % [player.score]
+		score_label.text = "%s PTS" % [player.score]
 
 func _process(_delta: float) -> void:
 	if player.dead and Input.is_action_just_pressed("restart"):
