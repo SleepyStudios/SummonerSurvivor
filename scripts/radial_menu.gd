@@ -63,6 +63,6 @@ func _process(delta: float) -> void:
 			
 		if visible:
 			tmr_can_scroll += delta
-			if tmr_can_scroll >= 0.3:
+			if tmr_can_scroll >= 0.4:
 				can_scroll = true
 				tmr_can_scroll = 0
