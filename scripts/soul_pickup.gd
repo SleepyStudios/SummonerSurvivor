@@ -9,7 +9,10 @@ var velocity: Vector2
 
 func _get_speed() -> float:
 	if not player.can_pickup_souls():
+		modulate = Color(1, 1, 1, 180 / 255.0)
 		return 0
+	else:
+		modulate = Color.WHITE
 
 	var distance = position.distance_to(player.position)
 	return lerp(MAX_SPEED, 16, clamp(distance / ATTRACTION_DISTANCE, 0, 1))

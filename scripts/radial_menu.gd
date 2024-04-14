@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 
 	if not Engine.is_editor_hint():
 		if Input.is_action_just_pressed("open_summon_menu"):
-			visible = not visible			
+			visible = not visible
 
 		if Input.is_action_just_pressed("choose_summon") and visible:
 			get_children()[scroll_idx % get_children().size()].press()
