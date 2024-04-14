@@ -13,7 +13,9 @@ func _current_upgrade_requirement() -> int:
 	return UPGRADE_TIERS[current_upgrade_tier]
 
 func _update_label_text() -> void:
-	label.text = "[X] OFFER %s SOULS" % [_current_upgrade_requirement()] if _can_upgrade() else "NEED %s SOULS" % [_current_upgrade_requirement() - player.souls]
+	var missing_souls = _current_upgrade_requirement() - player.souls
+	var soul_text = "SOUL" if missing_souls == 1 else "SOULS"
+	label.text = "[X] OFFER %s SOULS" % [_current_upgrade_requirement()] if _can_upgrade() else "NEED %s %s" % [missing_souls, soul_text]
 
 func _can_upgrade() -> bool:
 	return player.souls >= _current_upgrade_requirement()
@@ -26,7 +28,8 @@ func _on_interactable_area_body_exited(_body: Node2D) -> void:
 	label.visible = false
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("upgrade") and _can_upgrade():
+	if Input.is_action_just_pressed("upgrade") and _can_upgrade() and label.visible:
+		label.text = "UPGRADED!"
 		player.on_upgrade_soul_capacity(_current_upgrade_requirement())
 
 		if current_upgrade_tier < UPGRADE_TIERS.size() - 1:
