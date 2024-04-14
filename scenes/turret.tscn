@@ -1,9 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3ov21223a3bd"]
+[gd_scene load_steps=10 format=3 uid="uid://c3ov21223a3bd"]
 
 [ext_resource type="Script" path="res://scripts/turret.gd" id="1_o6gv7"]
 [ext_resource type="Texture2D" uid="uid://cede26bitf26" path="res://assets/creatures/turret.png" id="2_e1qdi"]
-[ext_resource type="Texture2D" uid="uid://s7prf1evkx0q" path="res://assets/creatures/turret_snout.png" id="3_dvaf8"]
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="4_2o3cc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bogrr"]
+atlas = ExtResource("2_e1qdi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_340lo"]
+atlas = ExtResource("2_e1qdi")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vogy0"]
+atlas = ExtResource("2_e1qdi")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyfi5"]
+atlas = ExtResource("2_e1qdi")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xohj7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bogrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_340lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vogy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyfi5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djkhj"]
 radius = 44.0
@@ -13,18 +48,14 @@ texture_filter = 1
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_o6gv7")
 
-[node name="Base" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
-texture = ExtResource("2_e1qdi")
+sprite_frames = SubResource("SpriteFrames_xohj7")
+autoplay = "default"
 
-[node name="Snout" type="Sprite2D" parent="."]
-position = Vector2(-2, -16)
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(2.08165e-12, -38)
 scale = Vector2(4, 4)
-texture = ExtResource("3_dvaf8")
-offset = Vector2(5.5, 2.08165e-12)
-
-[node name="Muzzle" type="Node2D" parent="Snout"]
-position = Vector2(10, 2.08165e-12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_djkhj")
