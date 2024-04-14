@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="4_2o3cc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djkhj"]
-radius = 1.0
+radius = 44
 
-[node name="Turret" type="CharacterBody2D"]
+[node name="Turret" type="CharacterBody2D" groups=["player_ally"]]
 texture_filter = 1
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_o6gv7")
@@ -31,3 +31,8 @@ shape = SubResource("CircleShape2D_djkhj")
 
 [node name="Hitbox" parent="." instance=ExtResource("4_2o3cc")]
 search_group = 1
+
+[node name="CollisionShape2D" parent="Hitbox" index="1"]
+debug_color = Color(0.835294, 0.188235, 0.823529, 0.419608)
+
+[editable path="Hitbox"]

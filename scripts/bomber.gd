@@ -6,7 +6,7 @@ const EXPLODE_TRIGGER_DISTANCE = 150
 @onready var boom_timer: Timer = $BoomTimer
 
 var ready_to_explode = false
-var player_in_explosion = false
+var nodes_to_hit_in_explosion = []
 
 func _process(_delta: float) -> void:
 	if not ready_to_explode and position.distance_to(player.position) <= EXPLODE_TRIGGER_DISTANCE:
@@ -33,8 +33,11 @@ func _on_animated_sprite_2d_animation_changed() -> void:
 	if sprite.animation == "blinking":
 			boom_timer.start()
 	elif sprite.animation == "exploding":
-		if player_in_explosion:
-			player.on_hit()
+		for node in nodes_to_hit_in_explosion:
+			if node.is_in_group("player"):
+				player.on_hit()
+			elif node.is_in_group("player_ally"):
+				node.hitbox.handle_hit()
 
 		on_death()
 
@@ -43,9 +46,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		queue_free()
 
 func _on_explosion_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		player_in_explosion = true
+	if body.is_in_group("player") or body.is_in_group("player_ally"):
+		nodes_to_hit_in_explosion.push_back(body)
 
 func _on_explosion_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		player_in_explosion = false
+	if body.is_in_group("player") or body.is_in_group("player_ally"):
+		nodes_to_hit_in_explosion = nodes_to_hit_in_explosion.filter(func (node): return node != body)

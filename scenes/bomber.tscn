@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="5_kyhnb"]
 [ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://scenes/ui/enemy_health_bar_style.tres" id="6_iid16"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uy1w8"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_617in"]
+radius = 28.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7hvw"]
 atlas = ExtResource("2_nh2yx")
@@ -152,7 +153,7 @@ kill_points = 5
 max_health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_uy1w8")
+shape = SubResource("CircleShape2D_617in")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 3
@@ -167,14 +168,19 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Hitbox" parent="." instance=ExtResource("5_kyhnb")]
+does_physical_damage = false
 
 [node name="HealthBar" parent="Hitbox" index="0"]
 theme_override_styles/fill = ExtResource("6_iid16")
+
+[node name="CollisionShape2D" parent="Hitbox" index="1"]
+debug_color = Color(0.733333, 0.403922, 0.639216, 0.419608)
 
 [node name="ExplosionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
 shape = SubResource("CircleShape2D_dfriu")
+debug_color = Color(0.454902, 0.588235, 0.243137, 0.419608)
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
