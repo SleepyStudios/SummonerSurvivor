@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://divr04l50vppw"]
+[gd_scene load_steps=21 format=3 uid="uid://divr04l50vppw"]
 
 [ext_resource type="Texture2D" uid="uid://crmcwehtwe8eo" path="res://assets/world/grass.png" id="1_wgp2o"]
 [ext_resource type="PackedScene" uid="uid://c4if563vdqfb" path="res://scenes/world/big_rock.tscn" id="2_nbd1h"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/souls_label.gd" id="10_3dof2"]
 [ext_resource type="PackedScene" uid="uid://c7ylt42bmheo6" path="res://scenes/player.tscn" id="10_ikbc3"]
 [ext_resource type="Texture2D" uid="uid://bo1cgc5udcsje" path="res://assets/summon_icons/roller_icon.png" id="10_ng61e"]
+[ext_resource type="Script" path="res://scripts/points_label.gd" id="14_4dami"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fotqp"]
 size = Vector2(100, 1080)
@@ -163,15 +164,24 @@ cost = 5
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("9_80qbj")
 
-[node name="SoulsLabel" type="Label" parent="UI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
-offset_top = -85.0
-offset_right = 142.0
+offset_top = -134.0
+offset_right = 156.0
 offset_bottom = -40.0
 grow_vertical = 0
+
+[node name="PointsLabel" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_t471f")
+text = "POINTS"
+script = ExtResource("14_4dami")
+
+[node name="SoulsLabel" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
 theme = ExtResource("7_t471f")
 text = "SOULS"
 script = ExtResource("10_3dof2")
