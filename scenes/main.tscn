@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://divr04l50vppw"]
+[gd_scene load_steps=20 format=3 uid="uid://divr04l50vppw"]
 
 [ext_resource type="Texture2D" uid="uid://crmcwehtwe8eo" path="res://assets/world/grass.png" id="1_wgp2o"]
 [ext_resource type="PackedScene" uid="uid://c4if563vdqfb" path="res://scenes/world/big_rock.tscn" id="2_nbd1h"]
@@ -8,10 +8,12 @@
 [ext_resource type="Script" path="res://scripts/radial_menu.gd" id="6_lhuss"]
 [ext_resource type="PackedScene" uid="uid://51lwhs82udsv" path="res://scenes/ui/summon_button.tscn" id="7_3qbdf"]
 [ext_resource type="Theme" uid="uid://yu1dowvtkl7f" path="res://assets/ui/theme.tres" id="7_t471f"]
+[ext_resource type="Texture2D" uid="uid://bb516liyi5nof" path="res://assets/summon_icons/turret_icon.png" id="8_cn56n"]
+[ext_resource type="Texture2D" uid="uid://bdde7as7i33xy" path="res://assets/summon_icons/bomber_icon.png" id="9_3m3wj"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="9_80qbj"]
 [ext_resource type="Script" path="res://scripts/souls_label.gd" id="10_3dof2"]
 [ext_resource type="PackedScene" uid="uid://c7ylt42bmheo6" path="res://scenes/player.tscn" id="10_ikbc3"]
-[ext_resource type="Texture2D" uid="uid://s7prf1evkx0q" path="res://assets/creatures/turret_snout.png" id="13_ty60y"]
+[ext_resource type="Texture2D" uid="uid://bo1cgc5udcsje" path="res://assets/summon_icons/roller_icon.png" id="10_ng61e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fotqp"]
 size = Vector2(100, 1080)
@@ -138,17 +140,23 @@ visible = false
 z_index = 999
 script = ExtResource("6_lhuss")
 
-[node name="SummonButton" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
+[node name="SummonTurret" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
+position = Vector2(-60, -103.923)
+creature_icon = ExtResource("8_cn56n")
 
-[node name="SummonButton2" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
+[node name="SummonBomber" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
 position = Vector2(-60, 103.923)
 creature_name = "Bomber"
 creature_scene = "bomber"
-creature_icon = ExtResource("13_ty60y")
+creature_icon = ExtResource("9_3m3wj")
 cost = 1
 
-[node name="SummonButton3" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
+[node name="SummonRoller" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
 position = Vector2(120, 0)
+creature_name = "Roller"
+creature_scene = "roller"
+creature_icon = ExtResource("10_ng61e")
+cost = 5
 
 [node name="Player" parent="." instance=ExtResource("10_ikbc3")]
 

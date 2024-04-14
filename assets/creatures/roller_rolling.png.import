@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgstkdk67p5ns"
-path="res://.godot/imported/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.ctex"
+uid="uid://b6jom6k8epl0k"
+path="res://.godot/imported/roller_rolling.png-101868f33c9783272c3f9b8e5dd9a8c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg.png"
-dest_files=["res://.godot/imported/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.ctex"]
+source_file="res://assets/creatures/roller_rolling.png"
+dest_files=["res://.godot/imported/roller_rolling.png-101868f33c9783272c3f9b8e5dd9a8c3.ctex"]
 
 [params]
 
