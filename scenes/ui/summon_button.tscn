@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://2iwb3eg4e1i4" path="res://assets/ui/circle.png" id="1_o85rs"]
 [ext_resource type="Script" path="res://scripts/summon_button.gd" id="2_hq0s7"]
-[ext_resource type="Texture2D" uid="uid://dmf5o33urhy8a" path="res://assets/soul.png" id="3_r3cam"]
+[ext_resource type="Texture2D" uid="uid://cede26bitf26" path="res://assets/creatures/turret.png" id="3_fju31"]
 [ext_resource type="Theme" uid="uid://yu1dowvtkl7f" path="res://assets/ui/theme.tres" id="4_d4x4b"]
 
 [node name="SummonButton" type="Sprite2D"]
@@ -12,16 +12,17 @@ position = Vector2(-60, -103.923)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_o85rs")
 script = ExtResource("2_hq0s7")
-creature_name = "Bomber"
-creature_scene = "bomber"
+creature_name = "Turret"
+creature_scene = "turret"
+creature_icon = ExtResource("3_fju31")
 cost = 3
 
 [node name="SummonIcon" type="Sprite2D" parent="."]
 z_index = 99
+texture_filter = 1
 scale = Vector2(12, 12)
-texture = ExtResource("3_r3cam")
-offset = Vector2(2.08165e-12, 4)
-hframes = 4
+texture = ExtResource("3_fju31")
+offset = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 2

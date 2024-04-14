@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3ov21223a3bd"]
+
+[ext_resource type="Script" path="res://scripts/turret.gd" id="1_o6gv7"]
+[ext_resource type="Texture2D" uid="uid://cede26bitf26" path="res://assets/creatures/turret.png" id="2_e1qdi"]
+[ext_resource type="Texture2D" uid="uid://s7prf1evkx0q" path="res://assets/creatures/turret_snout.png" id="3_dvaf8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_djkhj"]
+radius = 40.0
+
+[node name="Turret" type="StaticBody2D"]
+position = Vector2(225, 146)
+script = ExtResource("1_o6gv7")
+
+[node name="Base" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_e1qdi")
+
+[node name="Snout" type="Sprite2D" parent="."]
+position = Vector2(-2, -16)
+scale = Vector2(4, 4)
+texture = ExtResource("3_dvaf8")
+offset = Vector2(5.5, 2.08165e-12)
+
+[node name="Muzzle" type="Node2D" parent="Snout"]
+position = Vector2(5, 2.08165e-12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_djkhj")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://divr04l50vppw"]
+[gd_scene load_steps=18 format=3 uid="uid://divr04l50vppw"]
 
 [ext_resource type="Texture2D" uid="uid://crmcwehtwe8eo" path="res://assets/world/grass.png" id="1_wgp2o"]
 [ext_resource type="PackedScene" uid="uid://c4if563vdqfb" path="res://scenes/world/big_rock.tscn" id="2_nbd1h"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/ui.gd" id="9_80qbj"]
 [ext_resource type="Script" path="res://scripts/souls_label.gd" id="10_3dof2"]
 [ext_resource type="PackedScene" uid="uid://c7ylt42bmheo6" path="res://scenes/player.tscn" id="10_ikbc3"]
+[ext_resource type="Texture2D" uid="uid://s7prf1evkx0q" path="res://assets/creatures/turret_snout.png" id="13_ty60y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fotqp"]
 size = Vector2(100, 1080)
@@ -142,11 +143,13 @@ position = Vector2(-60, -103.923)
 
 [node name="SummonButton2" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
 position = Vector2(-60, 103.923)
+creature_name = "Bomber"
+creature_scene = "bomber"
+creature_icon = ExtResource("13_ty60y")
 cost = 1
 
 [node name="SummonButton3" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
 position = Vector2(120, 0)
-cost = 1
 
 [node name="Player" parent="." instance=ExtResource("10_ikbc3")]
 
@@ -170,8 +173,8 @@ script = ExtResource("10_3dof2")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2304.0
-offset_bottom = 1296.0
+offset_right = 4608.0
+offset_bottom = 2592.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)

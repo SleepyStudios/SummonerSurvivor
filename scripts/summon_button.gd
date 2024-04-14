@@ -3,6 +3,7 @@ extends Sprite2D
 
 @export var creature_name: String
 @export var creature_scene: String
+@export var creature_icon: Texture2D
 @export var cost: int
 
 @onready var player: Player = $"../../Player"
@@ -15,6 +16,7 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		label.text = "Summon %s (%s)" % [creature_name, cost]
 		label.visible = false
+		($"SummonIcon" as Sprite2D).texture = creature_icon
 
 func _check_disabled() -> bool:
 	return player.souls < cost
