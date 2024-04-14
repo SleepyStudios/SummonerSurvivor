@@ -12,6 +12,15 @@ var soul_pickup = preload ("res://scenes/soul_pickup.tscn")
 func _can_move() -> bool:
 	return not player.dead
 
+func get_center_point() -> Vector2:
+	for child in get_children():
+		if child is Sprite2D:
+			return position + child.texture.size() / 2
+		if child is AnimatedSprite2D:
+			return position + child.sprite_frames.get_frame_texture(child.animation, child.frame).get_size() / 2
+
+	return position
+
 func on_death() -> void:
 	if dead:
 		return

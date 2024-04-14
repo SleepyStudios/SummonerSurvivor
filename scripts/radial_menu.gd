@@ -21,18 +21,24 @@ func arrange_in_circle(n: int, r: float, center = Vector2.ZERO, start_offset = 0
 		output.push_front(pos + center)
 	return output
 
+func _scroll(dir: int):
+	_toggle_current_scroll_idx_button()
+	scroll_idx += dir
+	_toggle_current_scroll_idx_button()
+	can_scroll = false
+
 func _unhandled_input(event: InputEvent):
 	if event is InputEventPanGesture and can_scroll:
 		if event.delta.y < 0:
-			_toggle_current_scroll_idx_button()
-			scroll_idx -= 1
-			_toggle_current_scroll_idx_button()
-			can_scroll = false
+			_scroll(-1)
 		elif event.delta.y > 0:
-			_toggle_current_scroll_idx_button()
-			scroll_idx += 1
-			_toggle_current_scroll_idx_button()
-			can_scroll = false
+			_scroll(1)
+
+	if event is InputEventMouseButton and can_scroll:
+		if event.event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			_scroll(-1)
+		elif event.event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			_scroll(1)
 
 func _toggle_current_scroll_idx_button() -> void:
 	get_children()[scroll_idx % get_children().size()].toggle()
