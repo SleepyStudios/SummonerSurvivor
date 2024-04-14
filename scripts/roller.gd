@@ -7,6 +7,7 @@ const AGGRO_SPEED = 400
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var target: Creature
+var player_target_offset: Vector2 = Vector2(48, 0)
 
 func find_closest_enemy() -> Variant:
 	var closest_enemy = null
@@ -29,7 +30,7 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	if player and not target:
-		velocity = (player.position - position).normalized() * BASE_SPEED
+		velocity = ((player.position + player_target_offset) - position).normalized() * BASE_SPEED
 
 	if target and is_instance_valid(target):
 		if position.distance_to(target.position) > AGGRO_RANGE:
@@ -50,3 +51,6 @@ func _physics_process(_delta: float) -> void:
 	if enemy and not target and position.distance_to(enemy.position) <= AGGRO_RANGE:
 		target = enemy
 		sprite.play("rolling")
+
+func _on_position_timer_timeout() -> void:
+	player_target_offset *= -1
