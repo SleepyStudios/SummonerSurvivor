@@ -35,9 +35,9 @@ func _unhandled_input(event: InputEvent):
 			_scroll(1)
 
 	if event is InputEventMouseButton and can_scroll:
-		if event.event.button_index == MOUSE_BUTTON_WHEEL_UP:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			_scroll(-1)
-		elif event.event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			_scroll(1)
 
 func _toggle_current_scroll_idx_button() -> void:
