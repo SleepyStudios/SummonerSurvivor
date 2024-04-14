@@ -26,7 +26,7 @@ var patterns: Array = [
 var time: int = 0
 
 func _on_timer_timeout() -> void:
-  if disabled:
+  if disabled or player.dead:
     return
 
   time += 1

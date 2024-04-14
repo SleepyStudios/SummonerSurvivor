@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://divr04l50vppw"]
+[gd_scene load_steps=17 format=3 uid="uid://divr04l50vppw"]
 
 [ext_resource type="Texture2D" uid="uid://crmcwehtwe8eo" path="res://assets/world/grass.png" id="1_wgp2o"]
 [ext_resource type="PackedScene" uid="uid://c4if563vdqfb" path="res://scenes/world/big_rock.tscn" id="2_nbd1h"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/radial_menu.gd" id="6_lhuss"]
 [ext_resource type="PackedScene" uid="uid://51lwhs82udsv" path="res://scenes/ui/summon_button.tscn" id="7_3qbdf"]
 [ext_resource type="Theme" uid="uid://yu1dowvtkl7f" path="res://assets/ui/theme.tres" id="7_t471f"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="9_80qbj"]
 [ext_resource type="Script" path="res://scripts/souls_label.gd" id="10_3dof2"]
 [ext_resource type="PackedScene" uid="uid://c7ylt42bmheo6" path="res://scenes/player.tscn" id="10_ikbc3"]
 
@@ -46,7 +47,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_gbq3t"]
 resource_name = "fade_out"
-length = 2.0
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -132,6 +133,7 @@ autostart = true
 script = ExtResource("3_loki5")
 
 [node name="RadialMenu" type="Node2D" parent="."]
+visible = false
 z_index = 999
 script = ExtResource("6_lhuss")
 
@@ -148,9 +150,10 @@ cost = 1
 
 [node name="Player" parent="." instance=ExtResource("10_ikbc3")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("9_80qbj")
 
-[node name="SoulsLabel" type="Label" parent="CanvasLayer"]
+[node name="SoulsLabel" type="Label" parent="UI"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -163,7 +166,7 @@ theme = ExtResource("7_t471f")
 text = "SOULS"
 script = ExtResource("10_3dof2")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="Overlay" type="ColorRect" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -173,10 +176,46 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Overlay"]
 libraries = {
 "": SubResource("AnimationLibrary_vagu1")
 }
 autoplay = "fade_out"
 
+[node name="DeathUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DeathUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.5
+offset_top = -22.5
+offset_right = 204.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="UI/DeathUI/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_t471f")
+text = "Score
+"
+horizontal_alignment = 1
+
+[node name="RestartLabel" type="Label" parent="UI/DeathUI/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_t471f")
+text = "It's over, press [R] to restart"
+horizontal_alignment = 1
+
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="UI/Overlay/AnimationPlayer" to="UI" method="_on_animation_player_animation_finished"]

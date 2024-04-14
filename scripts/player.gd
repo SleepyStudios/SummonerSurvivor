@@ -10,19 +10,20 @@ const WORLD_SIZE = Vector2(1920, 1080)
 @onready var bg: Sprite2D = $"../BG"
 @onready var monuments_spawner: MonumentsSpawner = $"../Monuments"
 @onready var sprite: AnimatedSprite2D = $"AnimatedSprite2D"
+@onready var ui: UI = $"../UI"
 
 var dash_sprite = preload("res://scenes/dash_sprite.tscn")
 
 var speed = BASE_SPEED
 var can_dash = true
 var souls = 5
-var health = 10
+var health = 5
 var max_soul_capacity = 10
 var tmr_dash_sprite = 0
+var dead = false
+var score = 0
 
 func _ready() -> void:
-	var rect: Rect2 = bg.get_rect()
-
 	cam.limit_top = -WORLD_SIZE.y * 0.5
 	cam.limit_bottom = WORLD_SIZE.y * 0.5
 	cam.limit_left = -WORLD_SIZE.x * 0.5
@@ -31,6 +32,10 @@ func _ready() -> void:
 	monuments_spawner.spawn()
 
 func get_input() -> void:
+	if dead:
+		velocity = Vector2.ZERO
+		return
+
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
 
@@ -73,17 +78,29 @@ func _on_dash_timer_timeout() -> void:
 func _on_dash_cooldown_timer_timeout() -> void:
 	can_dash = true
 
+func _add_score(amount) -> void:
+	score += amount
+
 func on_hit() -> void:
+	if dead:
+		return
+
 	health -= 1
+	if health < 1:
+		dead = true
+		ui.on_player_death()
+
 	print("new health: %s" % [health])
 
 func on_pickup_soul() -> void:
 	souls += 1
+	_add_score(5)
 	print("new souls: %s" % [souls])
 
 func on_upgrade_soul_capacity(requirement: int) -> void:
 	souls -= requirement
 	max_soul_capacity += 10
+	_add_score(25)
 	print("upgraded soul capacity to: %s" % [max_soul_capacity])
 
 func can_pickup_souls() -> bool:

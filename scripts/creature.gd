@@ -8,7 +8,7 @@ class_name Creature extends CharacterBody2D
 var soul_pickup = preload ("res://scenes/soul_pickup.tscn")
 
 func _can_move() -> bool:
-	return true
+	return not player.dead
 
 func _on_death() -> void:
 	var pickup = soul_pickup.instantiate()
