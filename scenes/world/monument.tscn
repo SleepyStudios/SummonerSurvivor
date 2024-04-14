@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://csaq15etrkjur"]
 
 [ext_resource type="Script" path="res://scripts/monument.gd" id="1_3sc60"]
-[ext_resource type="Texture2D" uid="uid://doyux5qiw0nid" path="res://icon.svg" id="2_lguh0"]
+[ext_resource type="Texture2D" uid="uid://c2d5nb73wcdu" path="res://assets/world/health_totem.png" id="2_swrkd"]
 [ext_resource type="Theme" uid="uid://yu1dowvtkl7f" path="res://assets/ui/theme.tres" id="3_chybw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wuqk"]
@@ -21,10 +21,9 @@ shape = SubResource("RectangleShape2D_4wuqk")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.517647, 0, 0.701961, 1)
 z_index = 4
-scale = Vector2(0.5, 1)
-texture = ExtResource("2_lguh0")
+scale = Vector2(4, 4)
+texture = ExtResource("2_swrkd")
 
 [node name="InteractableArea" type="Area2D" parent="."]
 position = Vector2(2.08165e-12, 40)

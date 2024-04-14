@@ -22,7 +22,7 @@ func find_closest_enemy() -> Variant:
 func shoot(dir: Vector2) -> void:
 	var bullet: Bullet = bullet_scene.instantiate()
 	bullet.position = muzzle.global_position
-	bullet.launch(dir, 30, Bullet.SEARCH_GROUP.ENEMY)
+	bullet.launch(dir.normalized(), 40, Bullet.SEARCH_GROUP.ENEMY)
 	get_parent().add_child(bullet)
 
 func _process(delta: float) -> void:
@@ -31,6 +31,6 @@ func _process(delta: float) -> void:
 		$"Snout".rotation = dir.angle()
 
 		tmr_shoot += delta
-		if tmr_shoot >= 0.5:
+		if tmr_shoot >= 0.8:
 			shoot(dir)
 			tmr_shoot = 0

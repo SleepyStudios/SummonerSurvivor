@@ -29,8 +29,8 @@ func _on_interactable_area_body_exited(_body: Node2D) -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("upgrade") and _can_upgrade() and label.visible:
-		label.text = "UPGRADED!"
-		player.on_upgrade_soul_capacity(_current_upgrade_requirement())
+		label.text = "HEALTH GRANTED"
+		player.on_heal(_current_upgrade_requirement())
 
 		if current_upgrade_tier < UPGRADE_TIERS.size() - 1:
 			current_upgrade_tier += 1

@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 const BASE_SPEED = 300.0
 const DASH_SPEED = 1500.0
 const WORLD_SIZE = Vector2(1920, 1080)
+const MAX_HEALTH = 5
 
 @onready var cam: Camera2D = $"Camera2D"
 @onready var dash_timer: Timer = $"DashTimer"
@@ -17,8 +18,7 @@ var dash_sprite = preload("res://scenes/dash_sprite.tscn")
 var speed = BASE_SPEED
 var can_dash = true
 var souls = 5
-var health = 5
-var max_soul_capacity = 10
+var health = MAX_HEALTH
 var tmr_dash_sprite = 0
 var dead = false
 var score = 0
@@ -98,14 +98,10 @@ func on_pickup_soul() -> void:
 	_add_score(5)
 	print("new souls: %s" % [souls])
 
-func on_upgrade_soul_capacity(requirement: int) -> void:
+func on_heal(requirement: int) -> void:
 	souls -= requirement
-	max_soul_capacity += 10
-	_add_score(25)
-	print("upgraded soul capacity to: %s" % [max_soul_capacity])
-
-func can_pickup_souls() -> bool:
-	return souls < max_soul_capacity
+	health = MAX_HEALTH
+	print("new health: %s" % [health])
 
 func on_creature_summoned(creature_name: String, requirement: int) -> void:
 	souls -= requirement
