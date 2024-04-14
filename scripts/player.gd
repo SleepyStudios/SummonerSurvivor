@@ -8,6 +8,7 @@ const DASH_SPEED = 1500.0
 @onready var dash_cooldown_timer: Timer = $"DashCooldownTimer"
 @onready var bg: Sprite2D = $"../BG"
 @onready var monuments_spawner: MonumentsSpawner = $"../Monuments"
+@onready var radial_menu: RadialMenu = $"../CanvasLayer/RadialMenu"
 
 var speed = BASE_SPEED
 var can_dash = true
@@ -28,6 +29,9 @@ func _ready() -> void:
 func get_input() -> void:
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
+
+	if velocity != Vector2.ZERO:
+		radial_menu.visible = false
 
 	if can_dash and Input.is_action_just_pressed("dash"):
 		speed = DASH_SPEED
@@ -60,3 +64,7 @@ func on_upgrade_soul_capacity(requirement: int) -> void:
 
 func can_pickup_souls() -> bool:
 	return souls < max_soul_capacity
+
+func on_creature_summoned(creature_name: String, requirement: int) -> void:
+	souls -= requirement
+	print("summoned %s, new souls: %s" % [creature_name, souls])

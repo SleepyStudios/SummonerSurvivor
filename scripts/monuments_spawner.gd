@@ -1,7 +1,7 @@
 class_name MonumentsSpawner extends Node2D
 
-const SPAWN_OFFSET = 96
-const SPAWN_BOUNDARY = 196
+const SPAWN_OFFSET = 128
+const SPAWN_BOUNDARY = 260
 
 @onready var cam: Camera2D = $"../Player/Camera2D"
 var scene = preload ("res://scenes/monument.tscn")

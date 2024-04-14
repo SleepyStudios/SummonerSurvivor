@@ -19,11 +19,16 @@ var patterns: Array = [
   }
 ]
 
+@onready var player: Player = $"../Player"
 @onready var cam: Camera2D = $"../Player/Camera2D"
+@export var disabled: bool
 
 var time: int = 0
 
 func _on_timer_timeout() -> void:
+  if disabled:
+    return
+
   time += 1
 
   for pattern in patterns:
@@ -51,4 +56,4 @@ func spawn(pattern: Dictionary) -> void:
 
   var enemy = pattern.scene.instantiate()
   enemy.position = rand_pos
-  add_child(enemy)
+  player.get_parent().add_child(enemy)
