@@ -1,7 +1,7 @@
 @tool
 class_name RadialMenu extends Control
 
-@onready var player: Player = $"../../Player"
+@onready var player: Player = $"../Player"
 
 const MOUSE_OFFSET = Vector2(44, 44)
 

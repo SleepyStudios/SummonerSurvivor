@@ -8,7 +8,7 @@ const DASH_SPEED = 1500.0
 @onready var dash_cooldown_timer: Timer = $"DashCooldownTimer"
 @onready var bg: Sprite2D = $"../BG"
 @onready var monuments_spawner: MonumentsSpawner = $"../Monuments"
-@onready var radial_menu: RadialMenu = $"../CanvasLayer/RadialMenu"
+@onready var radial_menu: RadialMenu = $"../RadialMenu"
 
 var speed = BASE_SPEED
 var can_dash = true
