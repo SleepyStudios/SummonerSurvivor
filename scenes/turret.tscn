@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="4_2o3cc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djkhj"]
-radius = 44
+radius = 44.0
 
 [node name="Turret" type="CharacterBody2D" groups=["player_ally"]]
 texture_filter = 1

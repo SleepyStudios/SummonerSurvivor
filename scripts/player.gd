@@ -97,18 +97,13 @@ func on_hit() -> void:
 		ui.on_player_death()
 		sprite.stop()
 
-	print("new health: %s" % [health])
-
 func on_pickup_soul() -> void:
 	souls += 1
-	add_score(5)
-	print("new souls: %s" % [souls])
+	add_score(1)
 
 func on_heal(requirement: int) -> void:
 	souls -= requirement
 	health = MAX_HEALTH
-	print("new health: %s" % [health])
 
-func on_creature_summoned(creature_name: String, requirement: int) -> void:
+func on_creature_summoned(_creature_name: String, requirement: int) -> void:
 	souls -= requirement
-	print("summoned %s, new souls: %s" % [creature_name, souls])

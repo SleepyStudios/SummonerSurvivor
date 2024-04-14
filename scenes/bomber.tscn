@@ -177,6 +177,8 @@ theme_override_styles/fill = ExtResource("6_iid16")
 debug_color = Color(0.733333, 0.403922, 0.639216, 0.419608)
 
 [node name="ExplosionArea" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
 shape = SubResource("CircleShape2D_dfriu")
