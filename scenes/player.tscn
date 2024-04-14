@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://c7ylt42bmheo6"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_t8i75"]
+[ext_resource type="Texture2D" uid="uid://bdq8b3kpj41e4" path="res://assets/summoner_walking.png" id="2_dwarc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bw7l"]
+size = Vector2(64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xffe"]
+atlas = ExtResource("2_dwarc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_242dt"]
+atlas = ExtResource("2_dwarc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qum6"]
+atlas = ExtResource("2_dwarc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejjkx"]
+atlas = ExtResource("2_dwarc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vhi7"]
+atlas = ExtResource("2_dwarc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sk7c"]
+atlas = ExtResource("2_dwarc")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lcyxd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xffe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_242dt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qum6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejjkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vhi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sk7c")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 1
+y_sort_enabled = true
+collision_layer = 5
+motion_mode = 1
+script = ExtResource("1_t8i75")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2bw7l")
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="DashCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_lcyxd")
+animation = &"walking"
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]

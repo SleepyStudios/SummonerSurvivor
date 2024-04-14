@@ -12,11 +12,14 @@ const WORLD_SIZE = Vector2(1920, 1080)
 @onready var radial_menu: RadialMenu = $"../RadialMenu"
 @onready var sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 
+var dash_sprite = preload("res://scenes/dash_sprite.tscn")
+
 var speed = BASE_SPEED
 var can_dash = true
 var souls = 5
 var health = 10
 var max_soul_capacity = 10
+var tmr_dash_sprite = 0
 
 func _ready() -> void:
 	var rect: Rect2 = bg.get_rect()
@@ -51,6 +54,19 @@ func get_input() -> void:
 func _physics_process(_delta: float) -> void:
 	get_input()
 	move_and_slide()
+
+func _spawn_dash_sprite():
+	var ds = dash_sprite.instantiate()
+	ds.position = position
+	ds.find_child("AnimatedSprite2D").flip_h = sprite.flip_h
+	get_parent().add_child(ds)
+
+func _process(delta: float) -> void:
+	if speed == DASH_SPEED:
+		tmr_dash_sprite += delta
+		if tmr_dash_sprite >= 0.035:
+			_spawn_dash_sprite()
+			tmr_dash_sprite = 0
 
 func _on_dash_timer_timeout() -> void:
 	speed = BASE_SPEED
