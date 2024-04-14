@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7ylt42bmheo6"]
+[gd_scene load_steps=12 format=3 uid="uid://c7ylt42bmheo6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_t8i75"]
 [ext_resource type="Texture2D" uid="uid://bdq8b3kpj41e4" path="res://assets/summoner_walking.png" id="2_dwarc"]
+[ext_resource type="PackedScene" uid="uid://7iqsboiivbxg" path="res://scenes/health_bar.tscn" id="3_q2nu8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bw7l"]
 size = Vector2(64, 128)
@@ -87,6 +88,12 @@ texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_lcyxd")
 animation = &"walking"
+
+[node name="HealthBar" parent="." instance=ExtResource("3_q2nu8")]
+offset_left = -50.0
+offset_top = 91.0
+offset_right = 50.0
+offset_bottom = 99.0
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]

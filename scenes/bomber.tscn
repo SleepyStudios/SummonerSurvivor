@@ -1,12 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://dfagrj47rdnpo"]
+[gd_scene load_steps=26 format=3 uid="uid://dfagrj47rdnpo"]
 
 [ext_resource type="Script" path="res://scripts/bomber.gd" id="1_oushq"]
 [ext_resource type="Texture2D" uid="uid://dyx1gq3vscg8u" path="res://assets/creatures/bomb_creature_walking_blinking.png" id="2_nh2yx"]
 [ext_resource type="Texture2D" uid="uid://7rhh2dxhbrsx" path="res://assets/creatures/bomb_creature_walking.png" id="3_vv2jg"]
 [ext_resource type="Texture2D" uid="uid://ct5h7qttjsbqe" path="res://assets/creatures/bomb_creature_exploding.png" id="4_y1il7"]
+[ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="5_kyhnb"]
+[ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://scenes/ui/enemy_health_bar_style.tres" id="6_iid16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uy1w8"]
-size = Vector2(40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7hvw"]
 atlas = ExtResource("2_nh2yx")
@@ -142,11 +143,13 @@ animations = [{
 radius = 120.0
 
 [node name="Bomber" type="CharacterBody2D" groups=["enemy"]]
-position = Vector2(80, 80)
+position = Vector2(2.08165e-12, 2.08165e-12)
 collision_layer = 2
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_oushq")
+kill_points = 5
+max_health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uy1w8")
@@ -163,6 +166,11 @@ autoplay = "default"
 wait_time = 2.0
 one_shot = true
 
+[node name="Hitbox" parent="." instance=ExtResource("5_kyhnb")]
+
+[node name="HealthBar" parent="Hitbox" index="0"]
+theme_override_styles/fill = ExtResource("6_iid16")
+
 [node name="ExplosionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
@@ -173,3 +181,5 @@ shape = SubResource("CircleShape2D_dfriu")
 [connection signal="timeout" from="BoomTimer" to="." method="_on_boom_timer_timeout"]
 [connection signal="body_entered" from="ExplosionArea" to="." method="_on_explosion_area_body_entered"]
 [connection signal="body_exited" from="ExplosionArea" to="." method="_on_explosion_area_body_exited"]
+
+[editable path="Hitbox"]

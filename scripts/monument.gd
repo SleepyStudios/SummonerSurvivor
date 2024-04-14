@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@onready var label: Label = $"Label"
+@onready var label: Label = $Label
 @onready var player: Player = $"../../Player"
 
 const UPGRADE_TIERS = [3, 5, 10, 20, 40]

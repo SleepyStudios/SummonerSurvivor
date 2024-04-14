@@ -1,7 +1,6 @@
-extends StaticBody2D
+extends Summonable
 
-@onready var muzzle = $"Snout/Muzzle"
-@onready var player = $"../Player"
+@onready var muzzle = $Snout/Muzzle
 
 var bullet_scene = preload("res://scenes/bullet.tscn")
 
@@ -22,15 +21,18 @@ func find_closest_enemy() -> Variant:
 func shoot(dir: Vector2) -> void:
 	var bullet: Bullet = bullet_scene.instantiate()
 	bullet.position = muzzle.global_position
-	bullet.launch(dir.normalized(), 40, Bullet.SEARCH_GROUP.ENEMY)
+	bullet.launch(dir.normalized(), 40, Hitbox.SEARCH_GROUP.ENEMY)
 	get_parent().add_child(bullet)
 
 func _process(delta: float) -> void:
-	var dir = find_closest_enemy()
-	if dir:
-		$"Snout".rotation = dir.angle()
+	if dead:
+		return
+
+	var enemy = find_closest_enemy()
+	if enemy:
+		$Snout.rotation = position.angle_to_point(enemy)
 
 		tmr_shoot += delta
-		if tmr_shoot >= 0.8:
-			shoot(dir)
+		if tmr_shoot >= 1.0:
+			shoot(enemy - position)
 			tmr_shoot = 0

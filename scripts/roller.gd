@@ -1,11 +1,10 @@
-extends CharacterBody2D
+extends Summonable
 
 const AGGRO_RANGE = 400
 const BASE_SPEED = 150
 const AGGRO_SPEED = 400
 
-@onready var player: Player = $"../Player"
-@onready var sprite: AnimatedSprite2D = $"AnimatedSprite2D"
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var target: Creature
 
@@ -26,6 +25,9 @@ func _reset_to_running():
 	sprite.play("default")
 
 func _physics_process(_delta: float) -> void:
+	if dead:
+		return
+
 	if player and not target:
 		velocity = (player.position - position).normalized() * BASE_SPEED
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cogx87p0pb6a4"]
+
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="1_nbf0w"]
+[ext_resource type="PackedScene" uid="uid://7iqsboiivbxg" path="res://scenes/health_bar.tscn" id="2_j7dh0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mwe7p"]
+radius = 38.0
+
+[node name="Hitbox" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_nbf0w")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_j7dh0")]
+offset_left = -50.0
+offset_top = 49.0
+offset_right = 50.0
+offset_bottom = 57.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mwe7p")

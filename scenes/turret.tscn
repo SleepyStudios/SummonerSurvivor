@@ -1,15 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3ov21223a3bd"]
+[gd_scene load_steps=6 format=3 uid="uid://c3ov21223a3bd"]
 
 [ext_resource type="Script" path="res://scripts/turret.gd" id="1_o6gv7"]
 [ext_resource type="Texture2D" uid="uid://cede26bitf26" path="res://assets/creatures/turret.png" id="2_e1qdi"]
 [ext_resource type="Texture2D" uid="uid://s7prf1evkx0q" path="res://assets/creatures/turret_snout.png" id="3_dvaf8"]
+[ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="4_2o3cc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_djkhj"]
-radius = 30.0
+radius = 1.0
 
-[node name="Turret" type="StaticBody2D"]
+[node name="Turret" type="CharacterBody2D"]
 texture_filter = 1
-position = Vector2(225, 146)
+position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_o6gv7")
 
 [node name="Base" type="Sprite2D" parent="."]
@@ -27,3 +28,6 @@ position = Vector2(10, 2.08165e-12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_djkhj")
+
+[node name="Hitbox" parent="." instance=ExtResource("4_2o3cc")]
+search_group = 1

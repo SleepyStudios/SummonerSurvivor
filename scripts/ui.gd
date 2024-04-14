@@ -1,8 +1,8 @@
 class_name UI extends CanvasLayer
 
-@onready var death_ui = $"DeathUI"
-@onready var score_label: Label = $"DeathUI/VBoxContainer/ScoreLabel"
-@onready var overlay = $"Overlay"
+@onready var death_ui = $DeathUI
+@onready var score_label: Label = $DeathUI/VBoxContainer/ScoreLabel
+@onready var overlay = $Overlay
 @onready var player: Player = $"../Player"
 
 func _ready() -> void:
