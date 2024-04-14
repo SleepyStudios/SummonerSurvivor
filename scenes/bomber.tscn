@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ct5h7qttjsbqe" path="res://assets/creatures/bomb_creature_exploding.png" id="4_y1il7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uy1w8"]
-size = Vector2(64, 64)
+size = Vector2(40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7hvw"]
 atlas = ExtResource("2_nh2yx")
@@ -141,7 +141,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfriu"]
 radius = 120.0
 
-[node name="Bomber" type="CharacterBody2D"]
+[node name="Bomber" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(80, 80)
 collision_layer = 2
 collision_mask = 2
@@ -157,7 +157,6 @@ y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_hyrle")
-animation = &"exploding"
 autoplay = "default"
 
 [node name="BoomTimer" type="Timer" parent="."]

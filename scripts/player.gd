@@ -89,6 +89,7 @@ func on_hit() -> void:
 	if health < 1:
 		dead = true
 		ui.on_player_death()
+		sprite.stop()
 
 	print("new health: %s" % [health])
 

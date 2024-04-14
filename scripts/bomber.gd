@@ -18,6 +18,9 @@ func _process(_delta: float) -> void:
 	else:
 			sprite.flip_h = false
 
+	if dead and sprite.animation != "exploding":
+		sprite.animation = "exploding"
+
 func _on_boom_timer_timeout() -> void:
 	sprite.play("exploding")
 
@@ -34,7 +37,7 @@ func _on_animated_sprite_2d_animation_changed() -> void:
 		if player_in_explosion:
 			player.on_hit()
 
-		_on_death()
+		on_death()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite.animation == "exploding":

@@ -139,7 +139,6 @@ z_index = 999
 script = ExtResource("6_lhuss")
 
 [node name="SummonButton" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
-position = Vector2(-60, -103.923)
 
 [node name="SummonButton2" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
 position = Vector2(-60, 103.923)
@@ -173,8 +172,8 @@ script = ExtResource("10_3dof2")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 4608.0
-offset_bottom = 2592.0
+offset_right = 6912.0
+offset_bottom = 3888.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
