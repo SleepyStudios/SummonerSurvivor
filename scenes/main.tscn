@@ -1,15 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://divr04l50vppw"]
+[gd_scene load_steps=23 format=3 uid="uid://divr04l50vppw"]
 
-[ext_resource type="Texture2D" uid="uid://dgstkdk67p5ns" path="res://assets/bg.png" id="1_2ejo1"]
+[ext_resource type="Texture2D" uid="uid://crmcwehtwe8eo" path="res://assets/world/grass.png" id="1_wgp2o"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_6afyc"]
-[ext_resource type="Texture2D" uid="uid://doyux5qiw0nid" path="res://icon.svg" id="2_jujlo"]
+[ext_resource type="PackedScene" uid="uid://c4if563vdqfb" path="res://scenes/world/big_rock.tscn" id="2_nbd1h"]
 [ext_resource type="Script" path="res://scripts/monuments_spawner.gd" id="3_loki5"]
+[ext_resource type="PackedScene" uid="uid://dqqik74dpfhvf" path="res://scenes/world/small_rock.tscn" id="3_r2e6h"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="4_d5jgv"]
 [ext_resource type="Texture2D" uid="uid://dmf5o33urhy8a" path="res://assets/soul.png" id="5_6bfam"]
 [ext_resource type="Script" path="res://scripts/radial_menu.gd" id="6_lhuss"]
 [ext_resource type="Theme" uid="uid://yu1dowvtkl7f" path="res://assets/theme.tres" id="7_t471f"]
 [ext_resource type="Script" path="res://scripts/summon_button.gd" id="8_0lvb4"]
 [ext_resource type="Script" path="res://scripts/souls_label.gd" id="10_3dof2"]
+[ext_resource type="Texture2D" uid="uid://bdq8b3kpj41e4" path="res://assets/summoner_walking.png" id="10_jxqtx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fotqp"]
 size = Vector2(100, 1080)
@@ -18,13 +20,78 @@ size = Vector2(100, 1080)
 size = Vector2(100, 1920)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bw7l"]
-size = Vector2(64, 64)
+size = Vector2(64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xffe"]
+atlas = ExtResource("10_jxqtx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_242dt"]
+atlas = ExtResource("10_jxqtx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qum6"]
+atlas = ExtResource("10_jxqtx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejjkx"]
+atlas = ExtResource("10_jxqtx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vhi7"]
+atlas = ExtResource("10_jxqtx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sk7c"]
+atlas = ExtResource("10_jxqtx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lcyxd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xffe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_242dt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qum6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejjkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vhi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sk7c")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
 
 [node name="Scene" type="Node2D"]
+texture_filter = 1
 
 [node name="BG" type="Sprite2D" parent="."]
-modulate = Color(0.239216, 0.239216, 0.239216, 1)
-texture = ExtResource("1_2ejo1")
+texture_repeat = 2
+scale = Vector2(4, 4)
+texture = ExtResource("1_wgp2o")
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 480, 270)
+
+[node name="WorldObjects" type="Node2D" parent="BG"]
+
+[node name="BigRock" parent="BG/WorldObjects" instance=ExtResource("2_nbd1h")]
+
+[node name="SmallRock" parent="BG/WorldObjects" instance=ExtResource("3_r2e6h")]
 
 [node name="Bounds" type="Node2D" parent="."]
 
@@ -207,6 +274,7 @@ stretch_mode = 4
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
+y_sort_enabled = true
 collision_layer = 5
 motion_mode = 1
 script = ExtResource("2_6afyc")
@@ -217,10 +285,6 @@ scale = Vector2(0.5, 0.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_2bw7l")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_jujlo")
-
 [node name="DashTimer" type="Timer" parent="Player"]
 wait_time = 0.1
 one_shot = true
@@ -229,9 +293,15 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_lcyxd")
+animation = &"walking"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="SoulsLabel" type="Label" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

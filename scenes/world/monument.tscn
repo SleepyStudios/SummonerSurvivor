@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://csaq15etrkjur"]
 
-[ext_resource type="Script" path="res://scripts/monument.gd" id="1_ulrv3"]
-[ext_resource type="Texture2D" uid="uid://doyux5qiw0nid" path="res://icon.svg" id="2_1f2nb"]
-[ext_resource type="Theme" uid="uid://yu1dowvtkl7f" path="res://assets/theme.tres" id="3_mnkrg"]
+[ext_resource type="Script" path="res://scripts/monument.gd" id="1_3sc60"]
+[ext_resource type="Texture2D" uid="uid://doyux5qiw0nid" path="res://icon.svg" id="2_lguh0"]
+[ext_resource type="Theme" uid="uid://yu1dowvtkl7f" path="res://assets/theme.tres" id="3_virni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wuqk"]
 size = Vector2(64, 64)
@@ -13,7 +13,7 @@ radius = 64.0
 [node name="Monument" type="StaticBody2D"]
 position = Vector2(522, -193)
 collision_layer = 3
-script = ExtResource("1_ulrv3")
+script = ExtResource("1_3sc60")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, 32)
@@ -24,7 +24,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 modulate = Color(0.517647, 0, 0.701961, 1)
 z_index = 4
 scale = Vector2(0.5, 1)
-texture = ExtResource("2_1f2nb")
+texture = ExtResource("2_lguh0")
 
 [node name="InteractableArea" type="Area2D" parent="."]
 position = Vector2(2.08165e-12, 40)
@@ -47,7 +47,7 @@ offset_bottom = -83.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme = ExtResource("3_mnkrg")
+theme = ExtResource("3_virni")
 text = "OFFER SOULS"
 horizontal_alignment = 1
 

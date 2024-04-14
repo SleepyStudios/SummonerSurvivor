@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 const BASE_SPEED = 300.0
 const DASH_SPEED = 1500.0
+const WORLD_SIZE = Vector2(1920, 1080)
 
 @onready var cam: Camera2D = $"Camera2D"
 @onready var dash_timer: Timer = $"DashTimer"
@@ -9,6 +10,7 @@ const DASH_SPEED = 1500.0
 @onready var bg: Sprite2D = $"../BG"
 @onready var monuments_spawner: MonumentsSpawner = $"../Monuments"
 @onready var radial_menu: RadialMenu = $"../RadialMenu"
+@onready var sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 
 var speed = BASE_SPEED
 var can_dash = true
@@ -19,10 +21,10 @@ var max_soul_capacity = 10
 func _ready() -> void:
 	var rect: Rect2 = bg.get_rect()
 
-	cam.limit_top = rect.position.y
-	cam.limit_bottom = rect.position.y + rect.size.y
-	cam.limit_left = rect.position.x
-	cam.limit_right = rect.position.x + rect.size.x
+	cam.limit_top = -WORLD_SIZE.y * 0.5
+	cam.limit_bottom = WORLD_SIZE.y * 0.5
+	cam.limit_left = -WORLD_SIZE.x * 0.5
+	cam.limit_right = WORLD_SIZE.x * 0.5
 	cam.limit_smoothed = true
 	monuments_spawner.spawn()
 
@@ -32,6 +34,14 @@ func get_input() -> void:
 
 	if velocity != Vector2.ZERO:
 		radial_menu.visible = false
+		sprite.play("walking")
+
+		if velocity.x > 0:
+				sprite.flip_h = true
+		else:
+				sprite.flip_h = false
+	else:
+		sprite.play("default")
 
 	if can_dash and Input.is_action_just_pressed("dash"):
 		speed = DASH_SPEED

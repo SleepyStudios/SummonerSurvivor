@@ -4,7 +4,7 @@ const SPAWN_OFFSET = 128
 const SPAWN_BOUNDARY = 260
 
 @onready var cam: Camera2D = $"../Player/Camera2D"
-var scene = preload ("res://scenes/monument.tscn")
+var scene = preload ("res://scenes/world/monument.tscn")
 
 func spawn() -> void:
   var rng = RandomNumberGenerator.new()

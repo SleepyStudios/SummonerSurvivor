@@ -45,6 +45,6 @@ Button/styles/normal = SubResource("StyleBoxFlat_ylw1x")
 Button/styles/pressed = SubResource("StyleBoxFlat_4a1ni")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/constants/outline_size = 4
+Label/constants/outline_size = 10
 Label/font_sizes/font_size = 32
 TextureButton/styles/disabled = SubResource("StyleBoxTexture_0faol")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqqik74dpfhvf"]
+
+[ext_resource type="Texture2D" uid="uid://cq5xwkke4x0sw" path="res://assets/world/small_rock.png" id="1_sg2gq"]
+
+[node name="SmallRock" type="Sprite2D"]
+position = Vector2(-85, -47.5)
+texture = ExtResource("1_sg2gq")
