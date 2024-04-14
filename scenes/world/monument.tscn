@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/monument.gd" id="1_3sc60"]
 [ext_resource type="Texture2D" uid="uid://doyux5qiw0nid" path="res://icon.svg" id="2_lguh0"]
-[ext_resource type="Theme" uid="uid://yu1dowvtkl7f" path="res://assets/theme.tres" id="3_virni"]
+[ext_resource type="Theme" uid="uid://yu1dowvtkl7f" path="res://assets/ui/theme.tres" id="3_chybw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wuqk"]
 size = Vector2(64, 64)
@@ -48,7 +48,7 @@ offset_bottom = -83.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme = ExtResource("3_virni")
+theme = ExtResource("3_chybw")
 text = "OFFER SOULS"
 horizontal_alignment = 1
 

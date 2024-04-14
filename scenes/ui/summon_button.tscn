@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://51lwhs82udsv"]
+
+[ext_resource type="Texture2D" uid="uid://2iwb3eg4e1i4" path="res://assets/ui/circle.png" id="1_o85rs"]
+[ext_resource type="Script" path="res://scripts/summon_button.gd" id="2_hq0s7"]
+[ext_resource type="Texture2D" uid="uid://dmf5o33urhy8a" path="res://assets/soul.png" id="3_r3cam"]
+[ext_resource type="Theme" uid="uid://yu1dowvtkl7f" path="res://assets/ui/theme.tres" id="4_d4x4b"]
+
+[node name="SummonButton" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0.313726)
+z_index = 98
+position = Vector2(-60, -103.923)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_o85rs")
+script = ExtResource("2_hq0s7")
+creature_name = "Bomber"
+creature_scene = "bomber"
+cost = 3
+
+[node name="SummonIcon" type="Sprite2D" parent="."]
+z_index = 99
+scale = Vector2(12, 12)
+texture = ExtResource("3_r3cam")
+offset = Vector2(2.08165e-12, 4)
+hframes = 4
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1250.0
+offset_top = -350.0
+offset_right = -850.0
+offset_bottom = -305.0
+grow_horizontal = 2
+scale = Vector2(5, 5)
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
+theme = ExtResource("4_d4x4b")
+text = "Summon Bomber (3)"
+horizontal_alignment = 1

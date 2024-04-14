@@ -9,7 +9,6 @@ const WORLD_SIZE = Vector2(1920, 1080)
 @onready var dash_cooldown_timer: Timer = $"DashCooldownTimer"
 @onready var bg: Sprite2D = $"../BG"
 @onready var monuments_spawner: MonumentsSpawner = $"../Monuments"
-@onready var radial_menu: RadialMenu = $"../RadialMenu"
 @onready var sprite: AnimatedSprite2D = $"AnimatedSprite2D"
 
 var dash_sprite = preload("res://scenes/dash_sprite.tscn")
@@ -36,7 +35,6 @@ func get_input() -> void:
 	velocity = input_direction * speed
 
 	if velocity != Vector2.ZERO:
-		radial_menu.visible = false
 		sprite.play("walking")
 
 		if velocity.x > 0:
