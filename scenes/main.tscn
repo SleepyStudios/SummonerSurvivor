@@ -54,7 +54,6 @@ shape = SubResource("RectangleShape2D_y87is")
 
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("4_d5jgv")
-disabled = true
 
 [node name="Timer" type="Timer" parent="Spawner"]
 autostart = true
