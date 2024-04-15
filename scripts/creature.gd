@@ -34,7 +34,8 @@ func on_death() -> void:
 		return
 
 	dead = true
-	player.add_score(kill_points)
+	Score.enemies_killed += 1
+	Score.enemy_score += kill_points
 
 	var pickup = soul_pickup.instantiate()
 	pickup.position = position

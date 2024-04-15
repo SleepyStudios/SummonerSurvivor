@@ -98,6 +98,7 @@ func _on_timer_timeout() -> void:
     return
 
   time += 1
+  Score.time_score += 1
 
   for pattern in patterns:
     if time >= pattern.start and time <= pattern.end and time % pattern.rate == 0:

@@ -20,7 +20,6 @@ var souls = 10
 var health = MAX_HEALTH
 var tmr_dash_sprite = 0
 var dead = false
-var score = 0
 
 func _ready() -> void:
 	var world_size = Vector2($"../BG".region_rect.size.x * 4 * 0.5, $"../BG".region_rect.size.y * 4 * 0.5)
@@ -83,9 +82,6 @@ func _on_dash_timer_timeout() -> void:
 func _on_dash_cooldown_timer_timeout() -> void:
 	can_dash = true
 
-func add_score(amount) -> void:
-	score += amount
-
 func on_hit() -> void:
 	if dead:
 		return
@@ -100,13 +96,15 @@ func on_hit() -> void:
 
 func on_pickup_soul() -> void:
 	souls += 1
-	add_score(1)
+	Score.souls_collected += 1
 	$SoulPickupSFX.play()
 
 func on_heal(requirement: int) -> void:
 	souls -= requirement
 	health = MAX_HEALTH
 	hitbox.health_bar.health = health
+	Score.soul_offerings += 1
 
 func on_creature_summoned(_creature_name: String, requirement: int) -> void:
 	souls -= requirement
+	Score.summons += 1
