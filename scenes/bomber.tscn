@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dfagrj47rdnpo"]
+[gd_scene load_steps=28 format=3 uid="uid://dfagrj47rdnpo"]
 
 [ext_resource type="Script" path="res://scripts/bomber.gd" id="1_oushq"]
 [ext_resource type="Texture2D" uid="uid://dyx1gq3vscg8u" path="res://assets/creatures/bomb_creature_walking_blinking.png" id="2_nh2yx"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://ct5h7qttjsbqe" path="res://assets/creatures/bomb_creature_exploding.png" id="4_y1il7"]
 [ext_resource type="Script" path="res://scripts/hit_tweener.gd" id="5_a6fuh"]
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="5_kyhnb"]
+[ext_resource type="AudioStream" uid="uid://bcqtec5ho1taf" path="res://assets/audio/bomber.ogg" id="7_5y56g"]
+[ext_resource type="AudioStream" uid="uid://dloixl3mqhoa7" path="res://assets/audio/explosion.ogg" id="8_rewpj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_617in"]
 radius = 28.0
@@ -184,6 +186,13 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
 shape = SubResource("CircleShape2D_dfriu")
 debug_color = Color(0.454902, 0.588235, 0.243137, 0.419608)
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_5y56g")
+
+[node name="ExplosionSFX" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-2.08165e-12, -2.08165e-12)
+stream = ExtResource("8_rewpj")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://qiigu6c0kpca"]
+[gd_scene load_steps=32 format=3 uid="uid://qiigu6c0kpca"]
 
 [ext_resource type="Script" path="res://scripts/mage.gd" id="1_e8xs4"]
 [ext_resource type="Texture2D" uid="uid://debt8yhkn1ptr" path="res://assets/creatures/dark_mage_teleport_in.png" id="2_yi2k6"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="4_lvguj"]
 [ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://assets/ui/enemy_health_bar_style.tres" id="6_n61af"]
 [ext_resource type="PackedScene" uid="uid://crrnxfsllyj6p" path="res://scenes/hit_tweener.tscn" id="6_og654"]
+[ext_resource type="AudioStream" uid="uid://rgwcvadbm0nl" path="res://assets/audio/mage.ogg" id="8_pg2a2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggjeo"]
 size = Vector2(48, 35)
@@ -221,6 +222,9 @@ sprite = NodePath("../AnimatedSprite2D")
 
 [node name="ShootTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_pg2a2")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

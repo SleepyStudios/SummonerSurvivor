@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://divr04l50vppw"]
+[gd_scene load_steps=26 format=3 uid="uid://divr04l50vppw"]
 
 [ext_resource type="Texture2D" uid="uid://crmcwehtwe8eo" path="res://assets/world/grass.png" id="1_wgp2o"]
 [ext_resource type="PackedScene" uid="uid://c4if563vdqfb" path="res://scenes/world/big_rock.tscn" id="2_nbd1h"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bo1cgc5udcsje" path="res://assets/summon_icons/roller_icon.png" id="10_ng61e"]
 [ext_resource type="Script" path="res://scripts/points_label.gd" id="14_4dami"]
 [ext_resource type="Texture2D" uid="uid://cenbpcnaje64m" path="res://assets/creatures/sword_summon.png" id="14_snsmg"]
+[ext_resource type="AudioStream" uid="uid://b2qe7qw7bdg0a" path="res://assets/audio/summonings.mp3" id="20_0mus1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fotqp"]
 size = Vector2(100, 1080)
@@ -270,6 +271,10 @@ theme = ExtResource("7_t471f")
 theme_override_font_sizes/font_size = 48
 text = "PRESS [R] TO RESTART"
 horizontal_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_0mus1")
+autoplay = true
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="UI/Overlay/AnimationPlayer" to="UI" method="_on_animation_player_animation_finished"]

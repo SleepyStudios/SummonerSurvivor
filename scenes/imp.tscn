@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://blk6t1xmwnjf4"]
+[gd_scene load_steps=28 format=3 uid="uid://blk6t1xmwnjf4"]
 
 [ext_resource type="Script" path="res://scripts/imp.gd" id="1_uvoeh"]
 [ext_resource type="Texture2D" uid="uid://cjdalp7lce2c5" path="res://assets/creatures/imp_walking_and_blinking.png" id="2_w6afu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/hit_tweener.gd" id="5_vum0h"]
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="6_ftt0k"]
 [ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://assets/ui/enemy_health_bar_style.tres" id="7_74e7r"]
+[ext_resource type="AudioStream" uid="uid://dloixl3mqhoa7" path="res://assets/audio/explosion.ogg" id="8_qavxn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_617in"]
 radius = 28.0
@@ -190,6 +191,9 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
 shape = SubResource("CircleShape2D_dfriu")
 debug_color = Color(0.454902, 0.588235, 0.243137, 0.419608)
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_qavxn")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -43,6 +43,7 @@ func _physics_process(_delta: float) -> void:
   if enemy and not enemy.is_in_group("sword_target") and not target and position.distance_to(enemy.position) <= AGGRO_RANGE:
     target = enemy
     target.add_to_group("sword_target")
+    $SFX.play()
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
   if not dead and area.get_parent().is_in_group("enemy") and area.get_parent() == target and not area.get_parent().dead:

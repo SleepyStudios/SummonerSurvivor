@@ -21,6 +21,8 @@ func find_closest_enemy() -> Variant:
 	return closest_vector
 
 func shoot(dir: Vector2) -> void:
+	$ShootSFX.play()
+
 	var bullet: Bullet = bullet_scene.instantiate()
 	bullet.position = muzzle.global_position
 	bullet.launch(dir.normalized(), 30)

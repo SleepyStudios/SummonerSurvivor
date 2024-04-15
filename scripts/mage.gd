@@ -49,5 +49,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
     sprite.play("teleport_in")
 
   elif sprite.animation == "teleport_in":
+    $SFX.play()
     $ShootTimer.start()
 

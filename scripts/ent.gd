@@ -57,6 +57,8 @@ func _on_shoot_timer_timeout() -> void:
     bullet.position = global_position
     bullet.launch(pos.normalized(), 10)
     get_parent().add_child(bullet)
+
+  $SFX.play()
   
   if reposition:
     sprite.play("default")

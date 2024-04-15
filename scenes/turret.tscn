@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3ov21223a3bd"]
+[gd_scene load_steps=13 format=3 uid="uid://c3ov21223a3bd"]
 
 [ext_resource type="Script" path="res://scripts/turret.gd" id="1_o6gv7"]
 [ext_resource type="Texture2D" uid="uid://cede26bitf26" path="res://assets/creatures/turret.png" id="2_e1qdi"]
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="4_2o3cc"]
 [ext_resource type="Script" path="res://scripts/hit_tweener.gd" id="4_ti82o"]
+[ext_resource type="AudioStream" uid="uid://byeevb66gccuh" path="res://assets/audio/turret.ogg" id="5_vaenw"]
+[ext_resource type="AudioStream" uid="uid://d1mfqtslh6e3e" path="res://assets/audio/turret_shoot.ogg" id="6_aq340"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bogrr"]
 atlas = ExtResource("2_e1qdi")
@@ -75,5 +77,11 @@ debug_color = Color(0.835294, 0.188235, 0.823529, 0.419608)
 [node name="HitTweener" type="Node2D" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("4_ti82o")
 sprite = NodePath("../AnimatedSprite2D")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_vaenw")
+
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_aq340")
 
 [editable path="Hitbox"]

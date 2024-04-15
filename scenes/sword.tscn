@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyhtsusj8ssmf"]
+[gd_scene load_steps=7 format=3 uid="uid://dyhtsusj8ssmf"]
 
 [ext_resource type="Script" path="res://scripts/sword.gd" id="1_oy5rv"]
 [ext_resource type="Texture2D" uid="uid://cenbpcnaje64m" path="res://assets/creatures/sword_summon.png" id="2_pnr1m"]
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="4_t6wte"]
 [ext_resource type="PackedScene" uid="uid://crrnxfsllyj6p" path="res://scenes/hit_tweener.tscn" id="5_f8vot"]
+[ext_resource type="AudioStream" uid="uid://cb1rdwx67wjip" path="res://assets/audio/sword.ogg" id="5_xky54"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wugd"]
 radius = 18.0
@@ -40,6 +41,9 @@ position = Vector2(-3.48787e-15, 62)
 
 [node name="HitTweener" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("5_f8vot")]
 sprite = NodePath("../Sprite2D")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xky54")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 

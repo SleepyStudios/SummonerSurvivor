@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func _handle_spawned():
 	spawned = true
+	$SFX.play()
 
 func _find_closest_enemy() -> Variant:
 	var closest_enemy = null

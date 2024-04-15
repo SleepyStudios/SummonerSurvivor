@@ -33,6 +33,7 @@ func _on_animated_sprite_2d_animation_changed() -> void:
 	if sprite.animation == "blinking":
 			boom_timer.start()
 	elif sprite.animation == "exploding":
+		$SFX.play()
 		for node in nodes_to_hit_in_explosion:
 			node.hitbox.handle_hit()
 

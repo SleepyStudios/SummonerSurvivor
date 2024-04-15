@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctvln8x2u0kx7"]
+[gd_scene load_steps=13 format=3 uid="uid://ctvln8x2u0kx7"]
 
 [ext_resource type="Script" path="res://scripts/ent.gd" id="1_uulw2"]
 [ext_resource type="Texture2D" uid="uid://s5l3uyt3lmra" path="res://assets/creatures/ent_walking.png" id="2_fnqa5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dr8igcaib788d" path="res://assets/creatures/ent_shooting.png" id="3_wdrjx"]
 [ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://assets/ui/enemy_health_bar_style.tres" id="5_lvdqp"]
 [ext_resource type="PackedScene" uid="uid://crrnxfsllyj6p" path="res://scenes/hit_tweener.tscn" id="5_ntx3f"]
+[ext_resource type="AudioStream" uid="uid://bnmj6vafijdkw" path="res://assets/audio/ent.ogg" id="7_vxxi6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggjeo"]
 size = Vector2(48, 35)
@@ -82,6 +83,9 @@ debug_color = Color(0.733333, 0.403922, 0.639216, 0.419608)
 sprite = NodePath("../AnimatedSprite2D")
 
 [node name="ShootTimer" type="Timer" parent="."]
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_vxxi6")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 

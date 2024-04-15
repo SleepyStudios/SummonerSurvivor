@@ -54,6 +54,7 @@ func get_input() -> void:
 
 	if can_dash and Input.is_action_just_pressed("dash"):
 		speed = DASH_SPEED
+		$DashSFX.play()
 		can_dash = false
 		dash_timer.start()
 
@@ -100,6 +101,7 @@ func on_hit() -> void:
 func on_pickup_soul() -> void:
 	souls += 1
 	add_score(1)
+	$SoulPickupSFX.play()
 
 func on_heal(requirement: int) -> void:
 	souls -= requirement
