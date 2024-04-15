@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://biahjojqge6yi"]
+
+[ext_resource type="Texture2D" uid="uid://c65auakkwrn04" path="res://assets/world/bush.png" id="1_bl5ur"]
+
+[node name="Bush" type="Sprite2D" groups=["monument_spawn_avoid"]]
+z_index = 1
+y_sort_enabled = true
+texture = ExtResource("1_bl5ur")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://divr04l50vppw"]
+[gd_scene load_steps=24 format=3 uid="uid://divr04l50vppw"]
 
 [ext_resource type="Texture2D" uid="uid://crmcwehtwe8eo" path="res://assets/world/grass.png" id="1_wgp2o"]
 [ext_resource type="PackedScene" uid="uid://c4if563vdqfb" path="res://scenes/world/big_rock.tscn" id="2_nbd1h"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="4_d5jgv"]
 [ext_resource type="PackedScene" uid="uid://b4etbcqy3rt7n" path="res://scenes/world/log.tscn" id="5_ywgp1"]
 [ext_resource type="Script" path="res://scripts/radial_menu.gd" id="6_lhuss"]
+[ext_resource type="PackedScene" uid="uid://biahjojqge6yi" path="res://scenes/world/bush.tscn" id="6_lxrgt"]
 [ext_resource type="PackedScene" uid="uid://51lwhs82udsv" path="res://scenes/ui/summon_button.tscn" id="7_3qbdf"]
 [ext_resource type="Theme" uid="uid://yu1dowvtkl7f" path="res://assets/ui/theme.tres" id="7_t471f"]
 [ext_resource type="Texture2D" uid="uid://bb516liyi5nof" path="res://assets/summon_icons/turret_icon.png" id="8_cn56n"]
@@ -98,6 +99,7 @@ region_enabled = true
 region_rect = Rect2(2.08165e-12, 2.08165e-12, 480, 270)
 
 [node name="WorldObjects" type="Node2D" parent="."]
+y_sort_enabled = true
 scale = Vector2(4, 4)
 
 [node name="BigRock" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
@@ -116,6 +118,21 @@ position = Vector2(117.75, -42)
 
 [node name="Log" parent="WorldObjects" instance=ExtResource("5_ywgp1")]
 position = Vector2(92.5, -9)
+
+[node name="Bush" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(81.5, -30.5)
+
+[node name="Bush2" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(97.75, -23.75)
+
+[node name="Bush3" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(160, -85)
+
+[node name="Bush4" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(149, -74.75)
+
+[node name="Bush5" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(168.25, -70.5)
 
 [node name="Bounds" type="Node2D" parent="."]
 
@@ -217,8 +234,8 @@ script = ExtResource("10_3dof2")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 41856.0
-offset_bottom = 23544.0
+offset_right = 47616.0
+offset_bottom = 26784.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
