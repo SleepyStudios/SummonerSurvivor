@@ -1,20 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbce0xvo5ya6m"]
+[gd_scene load_steps=4 format=3 uid="uid://bbce0xvo5ya6m"]
 
 [ext_resource type="Script" path="res://scripts/slime_path.gd" id="1_0ukt2"]
 [ext_resource type="Texture2D" uid="uid://c53eee1gfnmhd" path="res://assets/creatures/slime_path.png" id="1_ap2kr"]
-[ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="3_b1uqq"]
-[ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://assets/ui/enemy_health_bar_style.tres" id="4_kvbpb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_m6ndp"]
-radius = 26.0768
+[sub_resource type="CircleShape2D" id="CircleShape2D_fnibe"]
+radius = 26.0
 
-[node name="SlimePath" type="CharacterBody2D" groups=["enemy", "ignore_enemy"]]
+[node name="SlimePath" type="Area2D" groups=["enemy", "ignore_enemy"]]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_0ukt2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_m6ndp")
+shape = SubResource("CircleShape2D_fnibe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -26,12 +24,5 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
-[node name="Hitbox" parent="." instance=ExtResource("3_b1uqq")]
-takes_physical_damage = false
-
-[node name="HealthBar" parent="Hitbox" index="0"]
-theme_override_styles/fill = ExtResource("4_kvbpb")
-
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-
-[editable path="Hitbox"]
