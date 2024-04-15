@@ -34,10 +34,7 @@ func _on_animated_sprite_2d_animation_changed() -> void:
 			boom_timer.start()
 	elif sprite.animation == "exploding":
 		for node in nodes_to_hit_in_explosion:
-			if node.is_in_group("player"):
-				player.on_hit()
-			elif node.is_in_group("player_ally"):
-				node.hitbox.handle_hit()
+			node.hitbox.handle_hit()
 
 		on_death()
 

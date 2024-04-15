@@ -1,11 +1,10 @@
 class_name Bullet extends StaticBody2D
 
 var velocity: Vector2
-var search_group: Hitbox.SEARCH_GROUP
+@export var search_group: Hitbox.SEARCH_GROUP
 
-func launch(direction: Vector2, speed: float, group: Hitbox.SEARCH_GROUP):    
+func launch(direction: Vector2, speed: float):    
 	velocity = direction * speed  
-	search_group = group
 	$Sprite2D.rotation = direction.angle()
 
 	if search_group == Hitbox.SEARCH_GROUP.PLAYER:

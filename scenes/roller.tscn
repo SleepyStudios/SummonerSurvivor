@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://crrnxfsllyj6p" path="res://scenes/hit_tweener.tscn" id="5_3xauq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0wugd"]
-radius = 50.0
+radius = 38.0132
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t0w3"]
 atlas = ExtResource("2_7h6a8")
@@ -73,25 +73,26 @@ animations = [{
 
 [node name="Roller" type="CharacterBody2D" groups=["player_ally"]]
 position = Vector2(2.08165e-12, 2.08165e-12)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 3
 script = ExtResource("1_5aak3")
-max_health = 6
+max_health = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.08165e-12, -28)
+z_index = 2
+position = Vector2(-2.08165e-12, -23)
 shape = SubResource("CircleShape2D_0wugd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(-1, -35)
+position = Vector2(-1, -30)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_xbvth")
 autoplay = "default"
 
 [node name="Hitbox" parent="." instance=ExtResource("4_u5ce7")]
-position = Vector2(-1, -35)
+position = Vector2(-1, -30)
 search_group = 1
 
 [node name="HealthBar" parent="Hitbox" index="0"]

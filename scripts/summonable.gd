@@ -12,6 +12,13 @@ func _ready() -> void:
 	health = max_health
 	hitbox.setup(health, on_hit)
 
+	scale = Vector2.ZERO
+	modulate = Color.TRANSPARENT
+
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate", Color.WHITE, 0.3).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self, "scale", Vector2.ONE, 0.15).set_trans(Tween.TRANS_LINEAR)
+
 func on_hit() -> void:
 	if dead:
 		return
@@ -32,5 +39,5 @@ func on_death() -> void:
 	dead = true
 
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.6).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.5).set_trans(Tween.TRANS_LINEAR)
 	tween.tween_callback(queue_free)

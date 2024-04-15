@@ -1,13 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2ki7um42351q"]
 
-[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_ddqvk"]
-[ext_resource type="Texture2D" uid="uid://cp1l7f5p11g4d" path="res://assets/bullet.png" id="2_fss0c"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_k6ofe"]
+[ext_resource type="Texture2D" uid="uid://bhmyk2niokqa4" path="res://assets/friendly_bullet.png" id="2_ejnkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aq8m1"]
 size = Vector2(20, 12)
 
-[node name="Bullet" type="StaticBody2D" groups=["player_ally"]]
-script = ExtResource("1_ddqvk")
+[node name="FriendlyBullet" type="StaticBody2D" groups=["player_ally"]]
+collision_layer = 0
+collision_mask = 33
+script = ExtResource("1_k6ofe")
+search_group = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_aq8m1")
@@ -17,4 +20,4 @@ z_index = 1
 y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(4, 4)
-texture = ExtResource("2_fss0c")
+texture = ExtResource("2_ejnkn")

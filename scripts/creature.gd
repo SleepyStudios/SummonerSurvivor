@@ -46,4 +46,8 @@ func _physics_process(_delta: float) -> void:
 
 	if player and _can_move():
 		velocity = (player.position - position).normalized() * speed
-		move_and_slide()
+
+	if position.distance_to(player.position) < 10:
+		velocity = Vector2.ZERO
+	
+	move_and_slide()

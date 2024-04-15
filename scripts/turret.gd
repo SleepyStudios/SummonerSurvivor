@@ -3,7 +3,7 @@ extends Summonable
 @onready var muzzle = $Muzzle
 @onready var sprite = $AnimatedSprite2D
 
-var bullet_scene = preload("res://scenes/bullet.tscn")
+var bullet_scene = preload("res://scenes/friendly_bullet.tscn")
 
 var tmr_shoot = 0
 
@@ -23,7 +23,7 @@ func find_closest_enemy() -> Variant:
 func shoot(dir: Vector2) -> void:
 	var bullet: Bullet = bullet_scene.instantiate()
 	bullet.position = muzzle.global_position
-	bullet.launch(dir.normalized(), 30, Hitbox.SEARCH_GROUP.ENEMY)
+	bullet.launch(dir.normalized(), 30)
 	get_parent().add_child(bullet)
 
 func _process(delta: float) -> void:

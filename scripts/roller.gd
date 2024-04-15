@@ -27,11 +27,11 @@ func _reset_to_running():
 	sprite.play("default")
 
 func _physics_process(_delta: float) -> void:
-	if dead:
+	if dead or scale != Vector2.ONE:
 		return
 
 	if player and not target:
-		velocity = ((player.position + player_target_offset) - position).normalized() * BASE_SPEED
+		velocity = (player.position - position).normalized() * BASE_SPEED
 
 	if target and is_instance_valid(target):
 		if position.distance_to(target.position) > AGGRO_RANGE:
@@ -40,6 +40,14 @@ func _physics_process(_delta: float) -> void:
 			velocity = (target.position - position).normalized() * AGGRO_SPEED
 	else:
 		_reset_to_running()
+
+	if position.distance_to(target.position if target else player.position) < 32:
+		velocity = Vector2.ZERO
+		if sprite.animation == "default":
+			sprite.stop()
+	else:
+		if not sprite.is_playing():
+			sprite.play()
 
 	if velocity.x > 0:
 		sprite.flip_h = true

@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://do4kjfir756f0"]
+
+[ext_resource type="Script" path="res://scripts/summoning_effect.gd" id="1_o8jgj"]
+[ext_resource type="Texture2D" uid="uid://b6d4y56rt5x5j" path="res://assets/summoning_effect.png" id="2_08o8e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sm1er"]
+atlas = ExtResource("2_08o8e")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yddj"]
+atlas = ExtResource("2_08o8e")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4nv6"]
+atlas = ExtResource("2_08o8e")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw8xb"]
+atlas = ExtResource("2_08o8e")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op320"]
+atlas = ExtResource("2_08o8e")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6atfr"]
+atlas = ExtResource("2_08o8e")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v5qi"]
+atlas = ExtResource("2_08o8e")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibw1g"]
+atlas = ExtResource("2_08o8e")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d1p66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sm1er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yddj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4nv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw8xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op320")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6atfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v5qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibw1g")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="SummoningEffect" type="Node2D"]
+z_index = 2
+script = ExtResource("1_o8jgj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_d1p66")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

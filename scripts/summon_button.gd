@@ -9,6 +9,8 @@ extends Sprite2D
 @onready var player: Player = $"../../Player"
 @onready var label: Label = $Label
 
+var summoning_effect_scene = preload("res://scenes/summoning_effect.tscn")
+
 var selected = false
 var disabled = false
 
@@ -36,9 +38,14 @@ func press() -> void:
 	if _check_disabled():
 		return
 
-	var creature = load("res://scenes/%s.tscn" % [creature_scene]).instantiate()
-	creature.position = get_parent().position
+	var spawn_pos = get_parent().position
 
+	var summoning_effect = summoning_effect_scene.instantiate()
+	summoning_effect.position = spawn_pos
+	player.get_parent().add_child(summoning_effect)
+
+	var creature = load("res://scenes/%s.tscn" % [creature_scene]).instantiate()
+	creature.position = spawn_pos
 	player.get_parent().add_child(creature)
 
 	player.on_creature_summoned(creature_name, cost)
