@@ -14,7 +14,7 @@ func _on_boom_timer_timeout() -> void:
 	sprite.play("exploding")
 
 func _physics_process(_delta: float) -> void:
-	if dead or scale != Vector2.ONE or sprite.animation == "exploding":
+	if dead or not spawned or sprite.animation == "exploding":
 		return
 
 	if player and not target:

@@ -7,6 +7,7 @@ class_name Summonable extends CharacterBody2D
 
 var health = max_health
 var dead = false
+var spawned = false
 
 func _ready() -> void:
 	health = max_health
@@ -18,6 +19,10 @@ func _ready() -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3).set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(self, "scale", Vector2.ONE, 0.15).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_callback(_handle_spawned)
+
+func _handle_spawned():
+	spawned = true
 
 func _find_closest_enemy() -> Variant:
 	var closest_enemy = null

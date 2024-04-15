@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyhtsusj8ssmf"]
+
+[ext_resource type="Script" path="res://scripts/sword.gd" id="1_oy5rv"]
+[ext_resource type="Texture2D" uid="uid://cenbpcnaje64m" path="res://assets/creatures/sword_summon.png" id="2_pnr1m"]
+[ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="4_t6wte"]
+[ext_resource type="PackedScene" uid="uid://crrnxfsllyj6p" path="res://scenes/hit_tweener.tscn" id="5_f8vot"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0wugd"]
+radius = 18.0
+
+[node name="Sword" type="CharacterBody2D" groups=["player_ally"]]
+position = Vector2(2.08165e-12, 2.08165e-12)
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("1_oy5rv")
+max_health = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 4
+position = Vector2(-2.06944e-12, 35)
+shape = SubResource("CircleShape2D_0wugd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 3
+scale = Vector2(4, 4)
+texture = ExtResource("2_pnr1m")
+
+[node name="Hitbox" parent="." instance=ExtResource("4_t6wte")]
+position = Vector2(-1, -30)
+search_group = 1
+
+[node name="HealthBar" parent="Hitbox" index="0"]
+offset_top = 119.0
+offset_bottom = 127.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="1"]
+z_index = 3
+position = Vector2(-3.48787e-15, 62)
+
+[node name="HitTweener" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("5_f8vot")]
+sprite = NodePath("../Sprite2D")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+
+[editable path="Hitbox"]

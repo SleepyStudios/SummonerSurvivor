@@ -7,7 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://scenes/ui/enemy_health_bar_style.tres" id="6_55tuy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_etbep"]
-size = Vector2(88, 46)
+size = Vector2(70, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jw6ld"]
 atlas = ExtResource("2_u1qhr")
@@ -57,7 +57,7 @@ max_health = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 2
-position = Vector2(-2.08165e-12, 21)
+position = Vector2(-2, 21)
 shape = SubResource("RectangleShape2D_etbep")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -83,7 +83,7 @@ debug_color = Color(0.733333, 0.403922, 0.639216, 0.419608)
 script = ExtResource("5_5vs75")
 sprite = NodePath("../AnimatedSprite2D")
 
-[node name="RightShield" type="StaticBody2D" parent="."]
+[node name="RightShield" type="StaticBody2D" parent="." groups=["enemy_shield"]]
 collision_layer = 32
 collision_mask = 0
 
@@ -92,7 +92,7 @@ position = Vector2(34, -13.5)
 shape = SubResource("RectangleShape2D_7afl0")
 debug_color = Color(0.670588, 0.505882, 0.0980392, 0.72549)
 
-[node name="LeftShield" type="StaticBody2D" parent="."]
+[node name="LeftShield" type="StaticBody2D" parent="." groups=["enemy_shield"]]
 position = Vector2(-76, -2.08165e-12)
 collision_layer = 32
 collision_mask = 0

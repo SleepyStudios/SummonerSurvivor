@@ -13,7 +13,7 @@ func _reset_to_running():
 	sprite.play("default")
 
 func _physics_process(_delta: float) -> void:
-	if dead or scale != Vector2.ONE:
+	if dead or not spawned:
 		return
 
 	if player and not target:
