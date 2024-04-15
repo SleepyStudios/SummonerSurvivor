@@ -11,6 +11,7 @@ enum SPAWN_POSITION {
 var imp = preload ("res://scenes/imp.tscn")
 var shield_guy = preload ("res://scenes/shield_guy.tscn")
 var slime = preload ("res://scenes/slime.tscn")
+var ent = preload ("res://scenes/ent.tscn")
 
 var patterns: Array = [
   {
@@ -33,6 +34,13 @@ var patterns: Array = [
     "rate": 1,
     "start": 30,
     "end": 60
+  },
+  {
+    "scene": ent,
+    "amount": 1,
+    "rate": 5,
+    "start": 60,
+    "end": 90
   }
 ]
 

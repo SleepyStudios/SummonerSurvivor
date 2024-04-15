@@ -7,11 +7,6 @@ func launch(direction: Vector2, speed: float):
 	velocity = direction * speed  
 	$Sprite2D.rotation = direction.angle()
 
-	if search_group == Hitbox.SEARCH_GROUP.PLAYER:
-		set_collision_mask_value(2, false)
-	elif search_group == Hitbox.SEARCH_GROUP.ENEMY:
-		set_collision_mask_value(3, false)
-
 func _physics_process(_delta: float):  
 	var collision = move_and_collide(velocity)    
 
