@@ -17,7 +17,7 @@ var dash_sprite = preload("res://scenes/dash_sprite.tscn")
 
 var speed = BASE_SPEED
 var can_dash = true
-var souls = 50
+var souls = 10
 var health = MAX_HEALTH
 var tmr_dash_sprite = 0
 var dead = false
@@ -61,10 +61,11 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _spawn_dash_sprite():
-	var ds = dash_sprite.instantiate()
-	ds.position = position
-	ds.find_child("AnimatedSprite2D").flip_h = sprite.flip_h
-	get_parent().add_child(ds)
+	if velocity != Vector2.ZERO:
+		var ds = dash_sprite.instantiate()
+		ds.position = position
+		ds.find_child("AnimatedSprite2D").flip_h = sprite.flip_h
+		get_parent().add_child(ds)
 
 func _process(delta: float) -> void:
 	if speed == DASH_SPEED:

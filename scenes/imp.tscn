@@ -151,6 +151,8 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 collision_layer = 32
 motion_mode = 1
 script = ExtResource("1_uvoeh")
+kill_points = 5
+max_health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_617in")

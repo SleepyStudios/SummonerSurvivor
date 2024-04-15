@@ -16,32 +16,46 @@ var mage = preload ("res://scenes/mage.tscn")
 
 var patterns: Array = [
   {
-    "scene": imp,
+    "scene": slime,
     "amount": 1,
-    "rate": 8,
+    "rate": 3,
     "start": 1,
-    "end": 30
+    "end": 60
   },
   {
-    "scene": mage,
+    "scene": imp,
     "amount": 1,
     "rate": 10,
-    "start": 15,
-    "end": 45
+    "start": 30,
+    "end": INF
   },
   {
     "scene": shield_guy,
     "amount": 1,
-    "rate": 1,
-    "start": 30,
-    "end": 60
+    "rate": 20,
+    "start": 60,
+    "end": INF
+  },
+    {
+    "scene": slime,
+    "amount": 2,
+    "rate": 4,
+    "start": 60,
+    "end": INF
   },
   {
     "scene": ent,
     "amount": 1,
     "rate": 5,
-    "start": 60,
-    "end": 90
+    "start": 90,
+    "end": INF
+  },
+    {
+    "scene": mage,
+    "amount": 1,
+    "rate": 30,
+    "start": 120,
+    "end": INF
   }
 ]
 

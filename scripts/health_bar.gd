@@ -10,7 +10,7 @@ func _set_health(new_health: int):
 
 	if new_health == 0:
 		visible = false
-	elif new_health > 0:
+	elif new_health > 0 and new_health < max_value:
 		visible = true
 
 	health = min(max_value, new_health)

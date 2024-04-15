@@ -189,13 +189,13 @@ script = ExtResource("6_lhuss")
 [node name="SummonTurret" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
 position = Vector2(1.43099e-06, -120)
 creature_icon = ExtResource("8_cn56n")
+cost = 10
 
 [node name="SummonBomber" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
 position = Vector2(-120, -1.04907e-05)
 creature_name = "Bomber"
 creature_scene = "bomber"
 creature_icon = ExtResource("9_3m3wj")
-cost = 1
 
 [node name="SummonRoller" parent="RadialMenu" instance=ExtResource("7_3qbdf")]
 position = Vector2(-5.24537e-06, 120)
@@ -209,7 +209,7 @@ position = Vector2(120, 0)
 creature_name = "Enchanted Blade"
 creature_scene = "sword"
 creature_icon = ExtResource("14_snsmg")
-cost = 5
+cost = 1
 
 [node name="Player" parent="." instance=ExtResource("10_ikbc3")]
 
@@ -242,8 +242,8 @@ script = ExtResource("10_3dof2")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 49536.0
-offset_bottom = 27864.0
+offset_right = 51456.0
+offset_bottom = 28944.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)

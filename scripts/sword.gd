@@ -24,8 +24,13 @@ func _physics_process(_delta: float) -> void:
     rotation = velocity.angle() - deg_to_rad(90)
     velocity = (target.position - position).normalized() * SPEED
   else:
+    if target:
+      initial_y = position.y
+
+    if is_instance_valid(target):
+      target.remove_from_group("sword_target")
+
     target = null
-    rotation = 0
     velocity = Vector2.ZERO
 
   var collision = move_and_collide(velocity)
@@ -35,11 +40,12 @@ func _physics_process(_delta: float) -> void:
       on_death()
 
   var enemy = _find_closest_enemy()
-  if enemy and not target and position.distance_to(enemy.position) <= AGGRO_RANGE:
+  if enemy and not enemy.is_in_group("sword_target") and not target and position.distance_to(enemy.position) <= AGGRO_RANGE:
     target = enemy
+    target.add_to_group("sword_target")
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-  if area.get_parent().is_in_group("enemy") and not dead:
+  if not dead and area.get_parent().is_in_group("enemy") and area.get_parent() == target and not area.get_parent().dead:
     on_death()
 
 func _process(delta):
@@ -48,3 +54,5 @@ func _process(delta):
 
   time += delta
   position.y = initial_y + sin(time * period) * amplitude
+  rotation_degrees = lerp_angle(rotation_degrees, 0, 0.5 * delta)
+

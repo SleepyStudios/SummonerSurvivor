@@ -37,7 +37,8 @@ collision_layer = 32
 motion_mode = 1
 script = ExtResource("1_xfcjd")
 kill_points = 10
-speed = 150.0
+speed = 175.0
+max_health = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.08165e-12, 8.5)

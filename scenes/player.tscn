@@ -64,7 +64,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bs5j6"]
-size = Vector2(36, 112)
+size = Vector2(36, 83)
 
 [node name="Player" type="CharacterBody2D" groups=["monument_spawn_avoid", "player"]]
 z_index = 1
@@ -107,7 +107,7 @@ offset_top = 19.0
 offset_bottom = 27.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="1"]
-position = Vector2(-2, -67)
+position = Vector2(-2, -52.5)
 shape = SubResource("RectangleShape2D_bs5j6")
 debug_color = Color(0.803922, 0.337255, 0.631373, 0.419608)
 
