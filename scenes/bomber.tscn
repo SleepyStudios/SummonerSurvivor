@@ -189,6 +189,7 @@ debug_color = Color(0.454902, 0.588235, 0.243137, 0.419608)
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_5y56g")
+volume_db = -8.0
 
 [node name="ExplosionSFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-2.08165e-12, -2.08165e-12)

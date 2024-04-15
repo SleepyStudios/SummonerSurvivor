@@ -21,9 +21,10 @@ func _ready() -> void:
 	tween.tween_property(self, "scale", Vector2.ONE, 0.15).set_trans(Tween.TRANS_LINEAR)
 	tween.tween_callback(_handle_spawned)
 
+	$SFX.play()
+
 func _handle_spawned():
 	spawned = true
-	$SFX.play()
 
 func _find_closest_enemy() -> Variant:
 	var closest_enemy = null

@@ -108,5 +108,6 @@ sprite = NodePath("../AnimatedSprite2D")
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_0o4mw")
+volume_db = -10.0
 
 [editable path="Hitbox"]

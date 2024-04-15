@@ -27,16 +27,16 @@ var patterns: Array = [
     "amount": 1,
     "rate": 10,
     "start": 30,
-    "end": INF
+    "end": 120
   },
   {
     "scene": shield_guy,
     "amount": 1,
     "rate": 20,
     "start": 60,
-    "end": INF
+    "end": 180
   },
-    {
+  {
     "scene": slime,
     "amount": 2,
     "rate": 4,
@@ -48,15 +48,43 @@ var patterns: Array = [
     "amount": 1,
     "rate": 5,
     "start": 90,
-    "end": INF
+    "end": 300
   },
-    {
+  {
     "scene": mage,
     "amount": 1,
     "rate": 30,
     "start": 120,
+    "end": 240
+  },
+  {
+    "scene": imp,
+    "amount": 1,
+    "rate": 5,
+    "start": 120,
     "end": INF
-  }
+  },
+  {
+    "scene": shield_guy,
+    "amount": 1,
+    "rate": 10,
+    "start": 180,
+    "end": INF
+  },
+  {
+    "scene": mage,
+    "amount": 1,
+    "rate": 15,
+    "start": 240,
+    "end": INF
+  },
+  {
+    "scene": ent,
+    "amount": 3,
+    "rate": 10,
+    "start": 300,
+    "end": INF
+  },
 ]
 
 @onready var player: Player = $"../Player"

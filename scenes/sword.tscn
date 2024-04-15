@@ -44,6 +44,7 @@ sprite = NodePath("../Sprite2D")
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_xky54")
+volume_db = -10.0
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 
