@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_g7epy"]
 [ext_resource type="Texture2D" uid="uid://c00agxmghx602" path="res://assets/enemy_bullet.png" id="2_kfi6s"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq8m1"]
-size = Vector2(20, 12)
+[sub_resource type="CircleShape2D" id="CircleShape2D_8p5tv"]
+radius = 14.0
 
 [node name="EnemyBullet" type="StaticBody2D" groups=["player_ally"]]
 collision_layer = 0
@@ -12,7 +12,8 @@ collision_mask = 25
 script = ExtResource("1_g7epy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_aq8m1")
+z_index = 2
+shape = SubResource("CircleShape2D_8p5tv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1

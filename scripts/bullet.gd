@@ -17,9 +17,6 @@ func _physics_process(_delta: float):
 
 	if collision != null:
 		if collision.get_collider().is_in_group("player" if search_group == Hitbox.SEARCH_GROUP.PLAYER else "enemy"):
-			if collision.get_collider().is_in_group("enemy"):
-				collision.get_collider().hitbox.handle_hit()
-			else:
-				collision.get_collider().on_hit()
+			collision.get_collider().hitbox.handle_hit()
 
 		queue_free()

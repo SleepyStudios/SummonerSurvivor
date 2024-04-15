@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_k6ofe"]
 [ext_resource type="Texture2D" uid="uid://bhmyk2niokqa4" path="res://assets/friendly_bullet.png" id="2_ejnkn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq8m1"]
-size = Vector2(20, 12)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewex6"]
+radius = 14.0
 
 [node name="FriendlyBullet" type="StaticBody2D" groups=["player_ally"]]
 collision_layer = 0
@@ -13,7 +13,8 @@ script = ExtResource("1_k6ofe")
 search_group = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_aq8m1")
+z_index = 2
+shape = SubResource("CircleShape2D_ewex6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1

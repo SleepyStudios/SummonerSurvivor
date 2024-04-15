@@ -16,7 +16,7 @@ var patterns: Array = [
   {
     "scene": imp,
     "amount": 1,
-    "rate": 2,
+    "rate": 8,
     "start": 1,
     "end": 30
   },
@@ -26,6 +26,13 @@ var patterns: Array = [
     "rate": 3,
     "start": 15,
     "end": 45
+  },
+  {
+    "scene": shield_guy,
+    "amount": 1,
+    "rate": 1,
+    "start": 30,
+    "end": 60
   }
 ]
 
@@ -62,7 +69,7 @@ func spawn(pattern: Dictionary) -> void:
     SPAWN_POSITION.RIGHT:
       rand_pos = Vector2(rand_pos.x + get_viewport_rect().size.x * 0.5 + SPAWN_OFFSET, randi() % int(get_viewport_rect().size.y))
 
-  print("summoning %s %s at %s,%s (%s)" % [pattern.amount, pattern.scene.get_state().get_node_name(0), rand_pos.x, rand_pos.y, SPAWN_POSITION.find_key(spawn_pos_type)])
+  print("PATTERN %s: spawning %s %s at %s,%s (%s)" % [patterns.find(pattern), pattern.amount, pattern.scene.get_state().get_node_name(0), rand_pos.x, rand_pos.y, SPAWN_POSITION.find_key(spawn_pos_type)])
 
   var enemy = pattern.scene.instantiate()
   enemy.position = rand_pos
