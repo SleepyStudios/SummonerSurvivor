@@ -12,6 +12,7 @@ var imp = preload ("res://scenes/imp.tscn")
 var shield_guy = preload ("res://scenes/shield_guy.tscn")
 var slime = preload ("res://scenes/slime.tscn")
 var ent = preload ("res://scenes/ent.tscn")
+var mage = preload ("res://scenes/mage.tscn")
 
 var patterns: Array = [
   {
@@ -22,9 +23,9 @@ var patterns: Array = [
     "end": 30
   },
   {
-    "scene": slime,
+    "scene": mage,
     "amount": 1,
-    "rate": 3,
+    "rate": 10,
     "start": 15,
     "end": 45
   },

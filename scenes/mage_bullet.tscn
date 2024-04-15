@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dta8l7r70agi"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_j5mly"]
+[ext_resource type="Texture2D" uid="uid://c00agxmghx602" path="res://assets/mage_bullet.png" id="2_gks1j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8p5tv"]
+radius = 14.0
+
+[node name="MageBullet" type="StaticBody2D" groups=["player_ally"]]
+collision_layer = 0
+collision_mask = 25
+script = ExtResource("1_j5mly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+shape = SubResource("CircleShape2D_8p5tv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_gks1j")
