@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://yu1dowvtkl7f"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://yu1dowvtkl7f"]
+
+[ext_resource type="FontFile" uid="uid://bdyniwv4e8et5" path="res://assets/ui/ArcadeAlternate.ttf" id="1_coa48"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v87iq"]
 bg_color = Color(1, 1, 1, 0.156863)
@@ -47,4 +49,5 @@ Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 10
 Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_coa48")
 TextureButton/styles/disabled = SubResource("StyleBoxTexture_0faol")

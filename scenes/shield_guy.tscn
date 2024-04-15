@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/shield_guy.gd" id="1_w4uhn"]
 [ext_resource type="Texture2D" uid="uid://6jk48jex14hj" path="res://assets/creatures/shield_guy_walking.png" id="2_u1qhr"]
+[ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://assets/ui/enemy_health_bar_style.tres" id="4_mn3an"]
 [ext_resource type="Script" path="res://scripts/hit_tweener.gd" id="5_5vs75"]
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="5_hmx1s"]
-[ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://scenes/ui/enemy_health_bar_style.tres" id="6_55tuy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_etbep"]
 size = Vector2(70, 46)
@@ -71,7 +71,7 @@ autoplay = "default"
 [node name="HealthBar" parent="Hitbox" index="0"]
 offset_top = 58.0
 offset_bottom = 66.0
-theme_override_styles/fill = ExtResource("6_55tuy")
+theme_override_styles/fill = ExtResource("4_mn3an")
 
 [node name="CollisionShape2D" parent="Hitbox" index="1"]
 z_index = 3

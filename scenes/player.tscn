@@ -92,7 +92,7 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 texture_filter = 1
-position = Vector2(1, -53)
+position = Vector2(1, -52)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_lcyxd")
 animation = &"walking"

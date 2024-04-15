@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://s5l3uyt3lmra" path="res://assets/creatures/ent_walking.png" id="2_fnqa5"]
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="3_c6vh5"]
 [ext_resource type="Texture2D" uid="uid://dr8igcaib788d" path="res://assets/creatures/ent_shooting.png" id="3_wdrjx"]
-[ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://scenes/ui/enemy_health_bar_style.tres" id="4_4fev0"]
+[ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://assets/ui/enemy_health_bar_style.tres" id="5_lvdqp"]
 [ext_resource type="PackedScene" uid="uid://crrnxfsllyj6p" path="res://scenes/hit_tweener.tscn" id="5_ntx3f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggjeo"]
@@ -71,7 +71,7 @@ autoplay = "default"
 [node name="HealthBar" parent="Hitbox" index="0"]
 offset_top = 88.0
 offset_bottom = 96.0
-theme_override_styles/fill = ExtResource("4_4fev0")
+theme_override_styles/fill = ExtResource("5_lvdqp")
 
 [node name="CollisionShape2D" parent="Hitbox" index="1"]
 z_index = 3

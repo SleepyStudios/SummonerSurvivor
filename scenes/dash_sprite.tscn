@@ -26,10 +26,11 @@ animations = [{
 }]
 
 [node name="DashSprite" type="Node2D"]
-scale = Vector2(4, 4)
 script = ExtResource("1_v14bp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.784314)
 texture_filter = 1
+position = Vector2(2.08165e-12, -54)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_dpxmw")

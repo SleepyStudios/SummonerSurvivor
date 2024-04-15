@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ct5h7qttjsbqe" path="res://assets/creatures/bomb_creature_exploding.png" id="4_fxvr1"]
 [ext_resource type="Script" path="res://scripts/hit_tweener.gd" id="5_vum0h"]
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="6_ftt0k"]
-[ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://scenes/ui/enemy_health_bar_style.tres" id="7_lqa8g"]
+[ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://assets/ui/enemy_health_bar_style.tres" id="7_74e7r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_617in"]
 radius = 28.0
@@ -178,7 +178,7 @@ does_physical_damage = false
 [node name="HealthBar" parent="Hitbox" index="0"]
 offset_top = 52.0
 offset_bottom = 60.0
-theme_override_styles/fill = ExtResource("7_lqa8g")
+theme_override_styles/fill = ExtResource("7_74e7r")
 
 [node name="CollisionShape2D" parent="Hitbox" index="1"]
 debug_color = Color(0.733333, 0.403922, 0.639216, 0.419608)

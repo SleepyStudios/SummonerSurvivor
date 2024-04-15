@@ -2,7 +2,6 @@ class_name Player extends CharacterBody2D
 
 const BASE_SPEED = 300.0
 const DASH_SPEED = 1500.0
-const WORLD_SIZE = Vector2(1920, 1080)
 const MAX_HEALTH = 5
 
 @onready var cam: Camera2D = $Camera2D
@@ -24,10 +23,12 @@ var dead = false
 var score = 0
 
 func _ready() -> void:
-	cam.limit_top = -WORLD_SIZE.y * 0.5
-	cam.limit_bottom = WORLD_SIZE.y * 0.5
-	cam.limit_left = -WORLD_SIZE.x * 0.5
-	cam.limit_right = WORLD_SIZE.x * 0.5
+	var world_size = Vector2($"../BG".region_rect.size.x * 4 * 0.5, $"../BG".region_rect.size.y * 4 * 0.5)
+
+	cam.limit_top = -world_size.y
+	cam.limit_bottom = world_size.y
+	cam.limit_left = -world_size.x
+	cam.limit_right = world_size.x
 	cam.limit_smoothed = true
 	monuments_spawner.spawn()
 
