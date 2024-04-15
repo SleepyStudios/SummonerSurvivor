@@ -1,30 +1,45 @@
-extends Creature
+extends Summonable
 
-const EXPLODE_TRIGGER_DISTANCE = 150
+const SPEED = 200
+const AGGRO_RANGE = 250
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var boom_timer: Timer = $BoomTimer
 
 var ready_to_explode = false
 var nodes_to_hit_in_explosion = []
-
-func _process(_delta: float) -> void:
-	if not ready_to_explode and position.distance_to(player.position) <= EXPLODE_TRIGGER_DISTANCE:
-			sprite.play("blinking")
-			ready_to_explode = true
-	if velocity.x > 0:
-			sprite.flip_h = true
-	else:
-			sprite.flip_h = false
-
-	if dead and sprite.animation != "exploding":
-		sprite.animation = "exploding"
+var target: Creature
 
 func _on_boom_timer_timeout() -> void:
 	sprite.play("exploding")
 
-func _can_move() -> bool:
-	return sprite.animation != "exploding"
+func _physics_process(_delta: float) -> void:
+	if dead or scale != Vector2.ONE or sprite.animation == "exploding":
+		return
+
+	if player and not target:
+		velocity = (player.position - position).normalized() * SPEED
+
+	if target and is_instance_valid(target):
+			velocity = (target.position - position).normalized() * SPEED
+	else:
+		target = null
+
+	if position.distance_to(target.position if target else player.position) < 32:
+		velocity = Vector2.ZERO
+
+	if velocity.x > 0:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
+
+	var enemy = _find_closest_enemy()
+	if enemy and not target and position.distance_to(enemy.position) <= AGGRO_RANGE:
+		target = enemy
+		sprite.play("blinking")
+		ready_to_explode = true
+
+	move_and_slide()
 
 func _on_animated_sprite_2d_animation_changed() -> void:
 	if not sprite:
@@ -43,9 +58,16 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		queue_free()
 
 func _on_explosion_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") or body.is_in_group("player_ally"):
+	if body.is_in_group("enemy") and not body.is_in_group("ignore_enemy"):
 		nodes_to_hit_in_explosion.push_back(body)
 
 func _on_explosion_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player") or body.is_in_group("player_ally"):
+	if body.is_in_group("enemy") and not body.is_in_group("ignore_enemy"):
 		nodes_to_hit_in_explosion = nodes_to_hit_in_explosion.filter(func (node): return node != body)
+
+func on_death() -> void:
+	if dead:
+		return
+
+	dead = true
+	sprite.animation = "exploding"

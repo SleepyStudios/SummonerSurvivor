@@ -8,7 +8,7 @@ size = Vector2(20, 12)
 
 [node name="FriendlyBullet" type="StaticBody2D" groups=["player_ally"]]
 collision_layer = 0
-collision_mask = 33
+collision_mask = 41
 script = ExtResource("1_k6ofe")
 search_group = 1
 

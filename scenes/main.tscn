@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://divr04l50vppw"]
+[gd_scene load_steps=23 format=3 uid="uid://divr04l50vppw"]
 
 [ext_resource type="Texture2D" uid="uid://crmcwehtwe8eo" path="res://assets/world/grass.png" id="1_wgp2o"]
 [ext_resource type="PackedScene" uid="uid://c4if563vdqfb" path="res://scenes/world/big_rock.tscn" id="2_nbd1h"]
 [ext_resource type="Script" path="res://scripts/monuments_spawner.gd" id="3_loki5"]
 [ext_resource type="PackedScene" uid="uid://dqqik74dpfhvf" path="res://scenes/world/small_rock.tscn" id="3_r2e6h"]
+[ext_resource type="PackedScene" uid="uid://dtu6ahgd1jda3" path="res://scenes/world/flower.tscn" id="4_26d6p"]
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="4_d5jgv"]
+[ext_resource type="PackedScene" uid="uid://b4etbcqy3rt7n" path="res://scenes/world/log.tscn" id="5_ywgp1"]
 [ext_resource type="Script" path="res://scripts/radial_menu.gd" id="6_lhuss"]
 [ext_resource type="PackedScene" uid="uid://51lwhs82udsv" path="res://scenes/ui/summon_button.tscn" id="7_3qbdf"]
 [ext_resource type="Theme" uid="uid://yu1dowvtkl7f" path="res://assets/ui/theme.tres" id="7_t471f"]
@@ -99,14 +101,27 @@ region_rect = Rect2(2.08165e-12, 2.08165e-12, 480, 270)
 scale = Vector2(4, 4)
 
 [node name="BigRock" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(-70.5, 66.25)
 
 [node name="SmallRock" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+
+[node name="Flower" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(107.75, -43.25)
+
+[node name="Flower2" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(111.5, -51.5)
+
+[node name="Flower3" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(117.75, -42)
+
+[node name="Log" parent="WorldObjects" instance=ExtResource("5_ywgp1")]
+position = Vector2(92.5, -9)
 
 [node name="Bounds" type="Node2D" parent="."]
 
 [node name="BoundaryLeft" type="StaticBody2D" parent="Bounds"]
 position = Vector2(-960, 2.08165e-12)
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundaryLeft"]
@@ -114,7 +129,7 @@ shape = SubResource("RectangleShape2D_fotqp")
 
 [node name="BoundaryRight" type="StaticBody2D" parent="Bounds"]
 position = Vector2(960, 2.08165e-12)
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundaryRight"]
@@ -123,7 +138,7 @@ shape = SubResource("RectangleShape2D_fotqp")
 [node name="BoundaryTop" type="StaticBody2D" parent="Bounds"]
 position = Vector2(2.08165e-12, -540)
 rotation = 1.5708
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundaryTop"]
@@ -132,7 +147,7 @@ shape = SubResource("RectangleShape2D_y87is")
 [node name="BoundaryBottom" type="StaticBody2D" parent="Bounds"]
 position = Vector2(2.08165e-12, 540)
 rotation = 1.5708
-collision_layer = 4
+collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BoundaryBottom"]
@@ -202,8 +217,8 @@ script = ExtResource("10_3dof2")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 34176.0
-offset_bottom = 19224.0
+offset_right = 39936.0
+offset_bottom = 22464.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)

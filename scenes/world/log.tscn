@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4etbcqy3rt7n"]
+
+[ext_resource type="Texture2D" uid="uid://cs7bb7piahvvd" path="res://assets/world/log.png" id="1_stthq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8idar"]
+size = Vector2(28, 8)
+
+[node name="Log" type="StaticBody2D" groups=["monument_spawn_avoid"]]
+z_index = 1
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 13)
+shape = SubResource("RectangleShape2D_8idar")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 12)
+texture = ExtResource("1_stthq")

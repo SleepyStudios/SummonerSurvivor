@@ -19,6 +19,19 @@ func _ready() -> void:
 	tween.tween_property(self, "modulate", Color.WHITE, 0.3).set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(self, "scale", Vector2.ONE, 0.15).set_trans(Tween.TRANS_LINEAR)
 
+func _find_closest_enemy() -> Variant:
+	var closest_enemy = null
+	var closest_distance = INF
+	
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		if not enemy.is_in_group("ignore_enemy"):
+			var distance = position.distance_squared_to(enemy.position)
+			if distance < closest_distance:
+				closest_distance = distance
+				closest_enemy = enemy
+
+	return closest_enemy
+
 func on_hit() -> void:
 	if dead:
 		return

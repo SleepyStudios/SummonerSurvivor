@@ -66,7 +66,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" groups=["monument_spawn_avoid", "player"]]
 z_index = 1
 collision_layer = 20
-collision_mask = 5
+collision_mask = 9
 collision_priority = 100.0
 motion_mode = 1
 script = ExtResource("1_t8i75")
