@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://dfagrj47rdnpo"]
+[gd_scene load_steps=27 format=3 uid="uid://dfagrj47rdnpo"]
 
 [ext_resource type="Script" path="res://scripts/bomber.gd" id="1_oushq"]
 [ext_resource type="Texture2D" uid="uid://dyx1gq3vscg8u" path="res://assets/creatures/bomb_creature_walking_blinking.png" id="2_nh2yx"]
 [ext_resource type="Texture2D" uid="uid://7rhh2dxhbrsx" path="res://assets/creatures/bomb_creature_walking.png" id="3_vv2jg"]
 [ext_resource type="Texture2D" uid="uid://ct5h7qttjsbqe" path="res://assets/creatures/bomb_creature_exploding.png" id="4_y1il7"]
+[ext_resource type="Script" path="res://scripts/hit_tweener.gd" id="5_a6fuh"]
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="5_kyhnb"]
 [ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://scenes/ui/enemy_health_bar_style.tres" id="6_iid16"]
 
@@ -167,6 +168,10 @@ autoplay = "default"
 wait_time = 2.0
 one_shot = true
 
+[node name="HitTweener" type="Node2D" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("5_a6fuh")
+sprite = NodePath("../AnimatedSprite2D")
+
 [node name="Hitbox" parent="." instance=ExtResource("5_kyhnb")]
 does_physical_damage = false
 
@@ -177,8 +182,8 @@ theme_override_styles/fill = ExtResource("6_iid16")
 debug_color = Color(0.733333, 0.403922, 0.639216, 0.419608)
 
 [node name="ExplosionArea" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 0
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
 shape = SubResource("CircleShape2D_dfriu")

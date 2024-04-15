@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://rnjlmabweum3"]
+
+[ext_resource type="Script" path="res://scripts/slime.gd" id="1_xfcjd"]
+[ext_resource type="Texture2D" uid="uid://b3cv10fg1v4pm" path="res://assets/creatures/slime_walking.png" id="2_r28cv"]
+[ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="3_a6unj"]
+[ext_resource type="StyleBox" uid="uid://d2t0uqgjiwara" path="res://scenes/ui/enemy_health_bar_style.tres" id="4_bxbu4"]
+[ext_resource type="PackedScene" uid="uid://crrnxfsllyj6p" path="res://scenes/hit_tweener.tscn" id="5_378tv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggjeo"]
+size = Vector2(38, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1r1i"]
+atlas = ExtResource("2_r28cv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v360y"]
+atlas = ExtResource("2_r28cv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1qejl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1r1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v360y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Slime" type="CharacterBody2D" groups=["enemy"]]
+position = Vector2(2.08165e-12, 2.08165e-12)
+motion_mode = 1
+script = ExtResource("1_xfcjd")
+kill_points = 10
+speed = 150.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.08165e-12, 8.5)
+shape = SubResource("RectangleShape2D_ggjeo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1qejl")
+autoplay = "default"
+
+[node name="Hitbox" parent="." instance=ExtResource("3_a6unj")]
+
+[node name="HealthBar" parent="Hitbox" index="0"]
+theme_override_styles/fill = ExtResource("4_bxbu4")
+
+[node name="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2(-3, 4)
+debug_color = Color(0.733333, 0.403922, 0.639216, 0.419608)
+
+[node name="PathTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="HitTweener" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("5_378tv")]
+sprite = NodePath("../AnimatedSprite2D")
+
+[connection signal="timeout" from="PathTimer" to="." method="_on_path_timer_timeout"]
+
+[editable path="Hitbox"]

@@ -20,6 +20,8 @@ func on_hit() -> void:
 	if health < 1:
 		on_death()
 
+	$HitTweener.start_hit_tween()
+
 func _handle_death() -> void:
 	pass
 

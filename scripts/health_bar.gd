@@ -10,6 +10,8 @@ func _set_health(new_health: int):
 
 	if new_health == 0:
 		visible = false
+	elif new_health > 0:
+		visible = true
 
 	health = min(max_value, new_health)
 	value = health
@@ -26,6 +28,7 @@ func init_health(_health: int):
 
 	damage_bar.max_value = health
 	damage_bar.value = health
+	visible = false
 
 func _on_timer_timeout() -> void:
 	damage_bar.value = health

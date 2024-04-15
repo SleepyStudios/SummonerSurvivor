@@ -20,12 +20,14 @@ func _update_label_text() -> void:
 func _can_upgrade() -> bool:
 	return player.souls >= _current_upgrade_requirement()
 
-func _on_interactable_area_body_entered(_body: Node2D) -> void:
-	_update_label_text()
-	label.visible = true
+func _on_interactable_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		_update_label_text()
+		label.visible = true
 
-func _on_interactable_area_body_exited(_body: Node2D) -> void:
-	label.visible = false
+func _on_interactable_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		label.visible = false
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("upgrade") and _can_upgrade() and label.visible:

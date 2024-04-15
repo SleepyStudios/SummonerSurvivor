@@ -12,10 +12,11 @@ func find_closest_enemy() -> Variant:
 	var closest_distance = INF
 	
 	for enemy in get_tree().get_nodes_in_group("enemy"):
-		var distance = position.distance_squared_to(enemy.position)
-		if distance < closest_distance:
-			closest_distance = distance
-			closest_vector = enemy.position
+		if not enemy.is_in_group("ignore_enemy"):
+			var distance = position.distance_squared_to(enemy.position)
+			if distance < closest_distance:
+				closest_distance = distance
+				closest_vector = enemy.position
 
 	return closest_vector
 

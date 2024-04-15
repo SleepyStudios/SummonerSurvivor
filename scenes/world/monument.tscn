@@ -11,22 +11,22 @@ size = Vector2(64, 64)
 radius = 64.0
 
 [node name="Monument" type="StaticBody2D"]
-position = Vector2(522, -193)
-collision_layer = 3
+z_index = 1
 script = ExtResource("1_3sc60")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.08165e-12, 32)
+position = Vector2(2.08165e-12, 41)
 shape = SubResource("RectangleShape2D_4wuqk")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 4
+y_sort_enabled = true
+position = Vector2(0, -13)
 scale = Vector2(4, 4)
 texture = ExtResource("2_swrkd")
 
 [node name="InteractableArea" type="Area2D" parent="."]
-position = Vector2(2.08165e-12, 40)
+position = Vector2(2.08165e-12, 49)
 collision_layer = 4
 collision_mask = 4
 
@@ -41,9 +41,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -128.0
+offset_top = -151.0
 offset_right = 150.0
-offset_bottom = -83.0
+offset_bottom = -106.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4

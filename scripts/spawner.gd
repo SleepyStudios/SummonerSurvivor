@@ -9,13 +9,23 @@ enum SPAWN_POSITION {
 }
 
 var bomber = preload ("res://scenes/bomber.tscn")
+var shield_guy = preload ("res://scenes/shield_guy.tscn")
+var slime = preload ("res://scenes/slime.tscn")
+
 var patterns: Array = [
+  # {
+  #   "scene": bomber,
+  #   "amount": 1,
+  #   "rate": 2,
+  #   "start": 1,
+  #   "end": 30
+  # },
   {
-    "scene": bomber,
+    "scene": slime,
     "amount": 1,
+    "rate": 3,
     "start": 1,
-    "rate": 2,
-    "end": 30
+    "end": 45
   }
 ]
 

@@ -18,7 +18,7 @@ func spawn() -> void:
       )
 
       var nodes_to_check = get_children().duplicate()
-      nodes_to_check.append(cam.get_parent())
+      nodes_to_check.append_array(get_tree().get_nodes_in_group("monument_spawn_avoid"))
 
       if not nodes_to_check.any(func (node: Node2D): return node.position.distance_to(rand_pos) <= SPAWN_BOUNDARY):
         var monument = scene.instantiate()

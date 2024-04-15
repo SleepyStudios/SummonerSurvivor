@@ -11,21 +11,17 @@ const MAX_HEALTH = 5
 @onready var monuments_spawner: MonumentsSpawner = $"../Monuments"
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ui: UI = $"../UI"
-@onready var health_bar: HealthBar = $HealthBar
+@onready var hitbox: Hitbox = $Hitbox
 
 var dash_sprite = preload("res://scenes/dash_sprite.tscn")
 
 var speed = BASE_SPEED
 var can_dash = true
-var souls = 5
-var health = MAX_HEALTH : set = _set_health
+var souls = 50
+var health = MAX_HEALTH
 var tmr_dash_sprite = 0
 var dead = false
 var score = 0
-
-func _set_health(new_value: int) -> void:
-	health = new_value
-	health_bar.health = health
 
 func _ready() -> void:
 	cam.limit_top = -WORLD_SIZE.y * 0.5
@@ -35,7 +31,7 @@ func _ready() -> void:
 	cam.limit_smoothed = true
 	monuments_spawner.spawn()
 
-	health_bar.init_health(health)
+	hitbox.setup(health, on_hit)
 
 func get_input() -> void:
 	if dead:
@@ -97,6 +93,8 @@ func on_hit() -> void:
 		ui.on_player_death()
 		sprite.stop()
 
+	$HitTweener.start_hit_tween()
+
 func on_pickup_soul() -> void:
 	souls += 1
 	add_score(1)
@@ -104,6 +102,7 @@ func on_pickup_soul() -> void:
 func on_heal(requirement: int) -> void:
 	souls -= requirement
 	health = MAX_HEALTH
+	hitbox.health_bar.health = health
 
 func on_creature_summoned(_creature_name: String, requirement: int) -> void:
 	souls -= requirement

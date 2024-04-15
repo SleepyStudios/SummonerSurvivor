@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3ov21223a3bd"]
+[gd_scene load_steps=11 format=3 uid="uid://c3ov21223a3bd"]
 
 [ext_resource type="Script" path="res://scripts/turret.gd" id="1_o6gv7"]
 [ext_resource type="Texture2D" uid="uid://cede26bitf26" path="res://assets/creatures/turret.png" id="2_e1qdi"]
 [ext_resource type="PackedScene" uid="uid://cogx87p0pb6a4" path="res://scenes/ui/hitbox.tscn" id="4_2o3cc"]
+[ext_resource type="Script" path="res://scripts/hit_tweener.gd" id="4_ti82o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bogrr"]
 atlas = ExtResource("2_e1qdi")
@@ -46,9 +47,13 @@ radius = 44.0
 [node name="Turret" type="CharacterBody2D" groups=["player_ally"]]
 texture_filter = 1
 position = Vector2(2.08165e-12, 2.08165e-12)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_o6gv7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_xohj7")
 autoplay = "default"
@@ -62,8 +67,13 @@ shape = SubResource("CircleShape2D_djkhj")
 
 [node name="Hitbox" parent="." instance=ExtResource("4_2o3cc")]
 search_group = 1
+does_physical_damage = false
 
 [node name="CollisionShape2D" parent="Hitbox" index="1"]
 debug_color = Color(0.835294, 0.188235, 0.823529, 0.419608)
+
+[node name="HitTweener" type="Node2D" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_ti82o")
+sprite = NodePath("../AnimatedSprite2D")
 
 [editable path="Hitbox"]
