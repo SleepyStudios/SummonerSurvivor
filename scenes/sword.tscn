@@ -30,6 +30,7 @@ texture = ExtResource("2_pnr1m")
 position = Vector2(-1, -30)
 search_group = 1
 takes_physical_damage = false
+damage = 2
 
 [node name="HealthBar" parent="Hitbox" index="0"]
 offset_top = 119.0

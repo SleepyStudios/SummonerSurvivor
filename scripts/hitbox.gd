@@ -11,6 +11,7 @@ signal on_hit
 @export var search_group: SEARCH_GROUP
 @export var does_physical_damage = true
 @export var takes_physical_damage = true
+@export var damage = 1
 
 @onready var health_bar = $HealthBar
 
@@ -38,14 +39,14 @@ func _on_hitbox_exited(area: Area2D) -> void:
 	if area.get_parent().is_in_group(search_group_name()):
 		colliding_with_hitboxes = colliding_with_hitboxes.filter(func (a): return a != area)
 
-func handle_hit() -> void:
+func handle_hit(amount: int = 1) -> void:
 	on_hit.emit()
-	health_bar.health -= 1
+	health_bar.health -= amount
 
 func _process(delta: float) -> void:
 	tmr_hit += delta
 	if tmr_hit >= 0.5:
 		for hitbox in colliding_with_hitboxes:
-			handle_hit()
+			handle_hit(hitbox.damage)
 
 		tmr_hit = 0

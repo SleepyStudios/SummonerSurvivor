@@ -73,3 +73,17 @@ func _reset_souls_tween():
   var tween = get_tree().create_tween()
   tween.tween_property(souls_label, "scale", Vector2.ONE, tween_speed).set_trans(Tween.TRANS_LINEAR)
   tween.tween_callback(func (): souls_tween_lock = false)
+
+func reset():
+  score_tween_lock = true
+  souls_tween_lock = true
+
+  souls_collected = 0
+  soul_offerings = 0
+  summons = 0
+  enemies_killed = 0
+  enemy_score = 0
+  time_score = 0
+
+  score_tween_lock = false
+  souls_tween_lock = false

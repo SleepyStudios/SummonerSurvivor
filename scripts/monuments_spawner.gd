@@ -9,7 +9,7 @@ var scene = preload ("res://scenes/world/monument.tscn")
 func spawn() -> void:
   var rng = RandomNumberGenerator.new()
 
-  for i in 5:
+  for i in 3:
     var spawned = false
     while not spawned:
       var rand_pos = Vector2(
