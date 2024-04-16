@@ -92,6 +92,9 @@ func on_hit() -> void:
 		ui.on_player_death()
 		sprite.stop()
 
+		var tween = get_tree().create_tween()
+		tween.tween_property(sprite, "modulate", Color.TRANSPARENT, 1.0).set_trans(Tween.TRANS_LINEAR)
+
 	$HitTweener.start_hit_tween()
 
 func on_pickup_soul() -> void:
