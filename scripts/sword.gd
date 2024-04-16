@@ -17,7 +17,7 @@ func _ready() -> void:
   initial_y = position.y
 
 func _physics_process(_delta: float) -> void:
-  if dead or not spawned:
+  if dead or not spawned or player.dead:
     return
 
   if target and is_instance_valid(target) and position.distance_to(target.position) < AGGRO_RANGE:

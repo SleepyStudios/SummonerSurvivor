@@ -38,6 +38,9 @@ func _on_shoot_timer_timeout() -> void:
   sprite.play("teleport_out")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+  if player.dead:
+    return
+
   if sprite.animation == "teleport_out":
     var rng = RandomNumberGenerator.new()
     var rand_pos = Vector2(

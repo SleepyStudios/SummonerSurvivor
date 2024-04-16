@@ -18,6 +18,7 @@ func on_death() -> void:
   tween.tween_callback(queue_free)
 
 func _on_path_timer_timeout() -> void:
-  var path = path_scene.instantiate()
-  path.position = position
-  player.get_parent().add_child(path)
+  if not player.dead:
+    var path = path_scene.instantiate()
+    path.position = position
+    player.get_parent().add_child(path)

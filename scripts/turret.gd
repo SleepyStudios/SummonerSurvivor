@@ -29,7 +29,7 @@ func shoot(dir: Vector2) -> void:
 	get_parent().add_child(bullet)
 
 func _process(delta: float) -> void:
-	if dead:
+	if dead or player.dead:
 		return
 
 	var enemy = find_closest_enemy()

@@ -21,7 +21,7 @@ func _can_move() -> bool:
   return position.distance_to(player.position) > SHOOT_DISTANCE_FROM_PLAYER
 
 func _physics_process(_delta: float) -> void:
-  if dead:
+  if dead or player.dead:
     return
 
   if player and _can_move():

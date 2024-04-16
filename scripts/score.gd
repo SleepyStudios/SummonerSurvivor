@@ -32,6 +32,9 @@ func _set_enemy_score(new_value):
   enemy_score = new_value
   _create_score_tween()
 
+func get_time_bonus() -> int:
+  return int(time_score / 60.0) * 10
+
 func base_calculation() -> int:
   return souls_collected + (soul_offerings * 3) + (summons * 5) + enemy_score
 
@@ -39,7 +42,7 @@ func get_current_score() -> int:
   return base_calculation()
 
 func get_final_score() -> int:
-  return base_calculation() + (time_score % 60) * 10
+  return base_calculation() + get_time_bonus()
 
 func _create_score_tween():
   if score_tween_lock:
