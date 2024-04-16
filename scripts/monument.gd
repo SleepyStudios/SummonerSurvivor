@@ -3,7 +3,7 @@ extends StaticBody2D
 @onready var label: Label = $Label
 @onready var player: Player = $"../../Player"
 
-const UPGRADE_TIERS = [3, 5, 10, 20, 40]
+const UPGRADE_TIERS = [5, 10, 25, 50]
 var current_upgrade_tier = 0
 
 func _ready() -> void:

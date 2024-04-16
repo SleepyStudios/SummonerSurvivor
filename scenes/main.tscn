@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://divr04l50vppw"]
+[gd_scene load_steps=30 format=3 uid="uid://divr04l50vppw"]
 
 [ext_resource type="Texture2D" uid="uid://crmcwehtwe8eo" path="res://assets/world/grass.png" id="1_wgp2o"]
 [ext_resource type="PackedScene" uid="uid://c4if563vdqfb" path="res://scenes/world/big_rock.tscn" id="2_nbd1h"]
@@ -19,13 +19,14 @@
 [ext_resource type="Texture2D" uid="uid://bo1cgc5udcsje" path="res://assets/summon_icons/roller_icon.png" id="10_ng61e"]
 [ext_resource type="Script" path="res://scripts/points_label.gd" id="14_4dami"]
 [ext_resource type="Texture2D" uid="uid://cenbpcnaje64m" path="res://assets/creatures/sword_summon.png" id="14_snsmg"]
+[ext_resource type="Script" path="res://scripts/tutorial_label.gd" id="18_i88js"]
 [ext_resource type="AudioStream" uid="uid://b2qe7qw7bdg0a" path="res://assets/audio/summonings.mp3" id="20_0mus1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fotqp"]
-size = Vector2(100, 1080)
+size = Vector2(100, 2160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y87is"]
-size = Vector2(100, 1920)
+size = Vector2(100, 3840)
 
 [sub_resource type="Animation" id="Animation_kjypw"]
 length = 0.001
@@ -423,7 +424,7 @@ texture_repeat = 2
 scale = Vector2(4, 4)
 texture = ExtResource("1_wgp2o")
 region_enabled = true
-region_rect = Rect2(2.08165e-12, 2.08165e-12, 480, 270)
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 860, 480)
 
 [node name="WorldObjects" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -432,7 +433,169 @@ scale = Vector2(4, 4)
 [node name="BigRock" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
 position = Vector2(-70.5, 66.25)
 
+[node name="BigRock2" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(62.25, 171)
+
+[node name="BigRock3" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(106.75, 147)
+
+[node name="BigRock4" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(87.75, 161.25)
+
+[node name="BigRock5" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(81.5, 175.5)
+
+[node name="BigRock6" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(292, 14)
+
+[node name="BigRock7" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(352, -29)
+
+[node name="BigRock8" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(365.75, 60)
+
+[node name="BigRock9" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(110.25, -147.75)
+
+[node name="BigRock10" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(41.75, -173.5)
+
+[node name="BigRock11" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(-51.5, -135.5)
+
+[node name="BigRock12" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(-312.5, 121.75)
+
+[node name="BigRock13" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(-186.5, 80.5)
+
+[node name="BigRock14" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(-309.75, -52.25)
+
+[node name="BigRock15" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(-332.5, -37.5)
+
+[node name="BigRock16" parent="WorldObjects" instance=ExtResource("2_nbd1h")]
+position = Vector2(-296.75, -33)
+
 [node name="SmallRock" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+
+[node name="SmallRock2" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-76.25, -42.5)
+
+[node name="SmallRock3" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-29.5, -119.5)
+
+[node name="SmallRock4" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(32, -183.5)
+
+[node name="SmallRock5" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(57.5, -150.75)
+
+[node name="SmallRock6" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(123.75, -110.5)
+
+[node name="SmallRock7" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(154.25, -176.25)
+
+[node name="SmallRock8" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(311.25, 7.25)
+
+[node name="SmallRock9" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(277.75, 27.25)
+
+[node name="SmallRock10" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(299.5, 5.75)
+
+[node name="SmallRock11" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(305.25, 14.5)
+
+[node name="SmallRock12" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(356, 76.75)
+
+[node name="SmallRock13" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(354.75, 55.25)
+
+[node name="SmallRock14" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(375, -12.25)
+
+[node name="SmallRock15" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(351.75, -54.25)
+
+[node name="SmallRock16" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(349, 11.25)
+
+[node name="SmallRock17" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(115, 168.5)
+
+[node name="SmallRock18" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(79, 196)
+
+[node name="SmallRock19" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(56.75, 188.75)
+
+[node name="SmallRock20" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(67, 153.25)
+
+[node name="SmallRock21" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(90.5, 147.5)
+
+[node name="SmallRock22" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(114.25, 133)
+
+[node name="SmallRock23" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-56.75, 91.75)
+
+[node name="SmallRock24" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-63.25, 98.75)
+
+[node name="SmallRock25" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-52.75, 100.5)
+
+[node name="SmallRock26" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-194.25, 128.25)
+
+[node name="SmallRock27" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-174.75, 94.25)
+
+[node name="SmallRock28" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-200, 74.75)
+
+[node name="SmallRock29" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-269.75, 164.5)
+
+[node name="SmallRock30" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-387.75, 85.25)
+
+[node name="SmallRock31" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-316, -22)
+
+[node name="SmallRock32" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-292.75, -110.5)
+
+[node name="SmallRock33" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-370.75, -196.25)
+
+[node name="SmallRock34" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-341.75, -214)
+
+[node name="SmallRock35" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-290.5, -179.5)
+
+[node name="SmallRock36" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(-177.5, -195)
+
+[node name="SmallRock37" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(257, -79)
+
+[node name="SmallRock38" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(278.5, -194.25)
+
+[node name="SmallRock39" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(215.75, -168.5)
+
+[node name="SmallRock40" parent="WorldObjects" instance=ExtResource("3_r2e6h")]
+position = Vector2(227, -165.75)
 
 [node name="Flower" parent="WorldObjects" instance=ExtResource("4_26d6p")]
 position = Vector2(107.75, -43.25)
@@ -443,8 +606,332 @@ position = Vector2(111.5, -51.5)
 [node name="Flower3" parent="WorldObjects" instance=ExtResource("4_26d6p")]
 position = Vector2(117.75, -42)
 
+[node name="Flower4" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(121, -56.25)
+
+[node name="Flower5" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(124, -35.25)
+
+[node name="Flower6" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-113.25, 128.75)
+
+[node name="Flower7" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-102.25, 132.75)
+
+[node name="Flower8" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-106.75, 140.25)
+
+[node name="Flower9" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-95.75, 141.75)
+
+[node name="Flower10" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-88.75, 130.5)
+
+[node name="Flower11" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-106.25, 122.75)
+
+[node name="Flower12" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-122, 133.5)
+
+[node name="Flower13" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-111.75, 147.75)
+
+[node name="Flower14" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-193, -45)
+
+[node name="Flower15" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-176.25, -45)
+
+[node name="Flower16" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-181.75, -60.75)
+
+[node name="Flower17" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-163.5, -48.25)
+
+[node name="Flower18" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-166, -35.25)
+
+[node name="Flower19" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-188.75, -11.75)
+
+[node name="Flower20" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-251.75, -154.25)
+
+[node name="Flower21" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(182.75, -158)
+
+[node name="Flower22" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(190, -144.75)
+
+[node name="Flower23" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(306, -43)
+
+[node name="Flower24" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(321.5, -13.75)
+
+[node name="Flower25" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(303.75, 36.75)
+
+[node name="Flower26" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(379.25, -103.75)
+
+[node name="Flower27" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(375, -129.75)
+
+[node name="Flower28" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(335.5, -135.25)
+
+[node name="Flower29" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(358, -124)
+
+[node name="Flower30" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(348, -183.25)
+
+[node name="Flower31" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(373.25, -197.5)
+
+[node name="Flower32" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(346.25, -203)
+
+[node name="Flower33" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(90, 85.5)
+
+[node name="Flower34" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(96.75, 77.5)
+
+[node name="Flower35" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(84.5, 75.5)
+
+[node name="Flower36" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(120.75, 60.25)
+
+[node name="Flower37" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(34.5, 139.25)
+
+[node name="Flower38" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-5.25, 117)
+
+[node name="Flower39" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-13.75, -89)
+
+[node name="Flower40" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(9.25, -100.5)
+
+[node name="Flower41" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-0.5, -79)
+
+[node name="Flower42" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(63.5, -80.25)
+
+[node name="Flower43" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-5.25, -173.25)
+
+[node name="Flower44" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(36.25, -151)
+
+[node name="Flower45" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-130, -175.5)
+
+[node name="Flower46" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-156.25, -183)
+
+[node name="Flower47" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-138.5, -190)
+
+[node name="Flower48" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-141.5, -164.5)
+
+[node name="Flower49" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-358.5, -116)
+
+[node name="Flower50" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-337.5, -132)
+
+[node name="Flower51" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-330.25, -73.75)
+
+[node name="Flower52" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-379.5, 111.75)
+
+[node name="Flower53" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-354.5, 146)
+
+[node name="Flower54" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-382.75, 176.25)
+
+[node name="Flower55" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-408, 173.25)
+
+[node name="Flower56" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-387.75, 145)
+
+[node name="Flower57" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-324.25, 179.75)
+
+[node name="Flower58" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-350.75, 210)
+
+[node name="Flower59" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(203, 181.75)
+
+[node name="Flower60" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(207.25, 176.25)
+
+[node name="Flower61" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(212.75, 185.5)
+
+[node name="Flower62" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(202.25, 191.5)
+
+[node name="Flower63" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(221, 184)
+
+[node name="Flower64" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(217, 172.5)
+
+[node name="Flower65" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(216.75, 197.25)
+
+[node name="Flower66" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(236, 187.75)
+
+[node name="Flower67" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(247, 195.25)
+
+[node name="Flower68" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(250.25, 184.75)
+
+[node name="Flower69" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(262, 187.75)
+
+[node name="Flower70" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(272.25, 192)
+
+[node name="Flower71" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(268, 181.25)
+
+[node name="Flower72" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(279.75, 185.5)
+
+[node name="Flower73" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(288, 177.75)
+
+[node name="Flower74" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(297.75, 173)
+
+[node name="Flower76" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(295.25, 161.25)
+
+[node name="Flower77" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(279.75, 150.75)
+
+[node name="Flower78" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(301, 182.5)
+
+[node name="Flower79" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(290, 207.75)
+
+[node name="Flower80" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(282, 196.75)
+
+[node name="Flower81" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(312.75, 188.5)
+
+[node name="Flower82" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(307.5, 169.75)
+
+[node name="Flower75" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(278.75, 170.75)
+
+[node name="Flower83" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(199.25, 30)
+
+[node name="Flower84" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(185.75, 19)
+
+[node name="Flower85" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-129.5, 82)
+
+[node name="Flower86" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-144, 66)
+
+[node name="Flower87" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-119.25, 28.5)
+
+[node name="Flower88" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-355.25, 23.5)
+
+[node name="Flower89" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-348.25, 49)
+
+[node name="Flower90" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-364, 46.5)
+
+[node name="Flower91" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-360, 32)
+
+[node name="Flower92" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-340, 34.25)
+
+[node name="Flower93" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-324.25, 23)
+
+[node name="Flower94" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-346.75, 9.75)
+
+[node name="Flower95" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-256.5, -8.75)
+
+[node name="Flower96" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(6.75, 55.5)
+
+[node name="Flower97" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(21.75, 42.5)
+
+[node name="Flower98" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(35.75, 41.25)
+
+[node name="Flower99" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(7.75, 33)
+
+[node name="Flower100" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(49.75, 1.5)
+
+[node name="Flower101" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(-23, 170.25)
+
+[node name="Flower102" parent="WorldObjects" instance=ExtResource("4_26d6p")]
+position = Vector2(21.75, 195.25)
+
 [node name="Log" parent="WorldObjects" instance=ExtResource("5_ywgp1")]
-position = Vector2(92.5, -9)
+position = Vector2(171.5, 93.75)
+
+[node name="Log2" parent="WorldObjects" instance=ExtResource("5_ywgp1")]
+position = Vector2(-189.75, 173.75)
+
+[node name="Log3" parent="WorldObjects" instance=ExtResource("5_ywgp1")]
+position = Vector2(-266.25, 28.25)
+
+[node name="Log4" parent="WorldObjects" instance=ExtResource("5_ywgp1")]
+position = Vector2(-165, -119.75)
+
+[node name="Log5" parent="WorldObjects" instance=ExtResource("5_ywgp1")]
+position = Vector2(299.5, -158)
+
+[node name="Log6" parent="WorldObjects" instance=ExtResource("5_ywgp1")]
+position = Vector2(346.25, 138)
+
+[node name="Log7" parent="WorldObjects" instance=ExtResource("5_ywgp1")]
+position = Vector2(-348, -180.75)
+
+[node name="Log8" parent="WorldObjects" instance=ExtResource("5_ywgp1")]
+position = Vector2(-153.75, 186.75)
+
+[node name="Log9" parent="WorldObjects" instance=ExtResource("5_ywgp1")]
+position = Vector2(-154.75, 156.25)
+
+[node name="Log10" parent="WorldObjects" instance=ExtResource("5_ywgp1")]
+position = Vector2(205, 79.5)
 
 [node name="Bush" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
 position = Vector2(81.5, -30.5)
@@ -461,10 +948,115 @@ position = Vector2(149, -74.75)
 [node name="Bush5" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
 position = Vector2(168.25, -70.5)
 
+[node name="Bush6" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(238.5, 166.75)
+
+[node name="Bush7" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(251.25, 149)
+
+[node name="Bush8" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(256, 161.25)
+
+[node name="Bush9" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(331.75, 183.75)
+
+[node name="Bush10" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(170.25, 28.75)
+
+[node name="Bush11" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(152.5, 17.5)
+
+[node name="Bush12" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(177.25, 3.25)
+
+[node name="Bush13" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(167.5, 13)
+
+[node name="Bush14" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(118, 37.25)
+
+[node name="Bush15" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(108.75, -86)
+
+[node name="Bush16" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-127, -6)
+
+[node name="Bush17" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-144, 2.5)
+
+[node name="Bush18" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-133, 29.5)
+
+[node name="Bush19" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-232, -113)
+
+[node name="Bush20" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-220, -151.25)
+
+[node name="Bush21" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-166.25, -168.5)
+
+[node name="Bush22" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-219, -106.5)
+
+[node name="Bush23" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-259.5, 119)
+
+[node name="Bush24" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-247, 130.25)
+
+[node name="Bush25" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-277.75, 137)
+
+[node name="Bush26" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-387.5, -73.75)
+
+[node name="Bush27" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-400.5, -82.25)
+
+[node name="Bush28" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-380.75, -129.75)
+
+[node name="Bush29" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(-322, -112.5)
+
+[node name="Bush30" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(302, -89)
+
+[node name="Bush31" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(315.75, -105.5)
+
+[node name="Bush32" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(360.5, -81.75)
+
+[node name="Bush33" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(380, -71.5)
+
+[node name="Bush34" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(367, -72.75)
+
+[node name="Bush35" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(333.25, -88.5)
+
+[node name="Bush36" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(324.5, -99.5)
+
+[node name="Bush37" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(314.25, -92)
+
+[node name="Bush38" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(384.5, -174.25)
+
+[node name="Bush39" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(397.25, -197.5)
+
+[node name="Bush40" parent="WorldObjects" instance=ExtResource("6_lxrgt")]
+position = Vector2(214.75, -201.5)
+
 [node name="Bounds" type="Node2D" parent="."]
 
 [node name="BoundaryLeft" type="StaticBody2D" parent="Bounds"]
-position = Vector2(-960, 2.08165e-12)
+position = Vector2(-1720, 2.08165e-12)
 collision_layer = 8
 collision_mask = 0
 
@@ -472,7 +1064,7 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_fotqp")
 
 [node name="BoundaryRight" type="StaticBody2D" parent="Bounds"]
-position = Vector2(960, 2.08165e-12)
+position = Vector2(1720, 2.08165e-12)
 collision_layer = 8
 collision_mask = 0
 
@@ -480,7 +1072,7 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_fotqp")
 
 [node name="BoundaryTop" type="StaticBody2D" parent="Bounds"]
-position = Vector2(2.08165e-12, -540)
+position = Vector2(2.08165e-12, -960)
 rotation = 1.5708
 collision_layer = 8
 collision_mask = 0
@@ -489,7 +1081,7 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_y87is")
 
 [node name="BoundaryBottom" type="StaticBody2D" parent="Bounds"]
-position = Vector2(2.08165e-12, 540)
+position = Vector2(2.08165e-12, 960)
 rotation = 1.5708
 collision_layer = 8
 collision_mask = 0
@@ -542,7 +1134,28 @@ cost = 1
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("9_80qbj")
 
-[node name="HSeparator" type="Control" parent="UI"]
+[node name="TutorialLabel" type="Label" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -72.0
+offset_right = 60.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("7_t471f")
+theme_override_font_sizes/font_size = 48
+text = "USE [WASD] OR [ARROWS] TO MOVE"
+horizontal_alignment = 1
+script = ExtResource("18_i88js")
+
+[node name="Timer" type="Timer" parent="UI/TutorialLabel"]
+autostart = true
+
+[node name="Labels" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -553,7 +1166,7 @@ offset_right = 156.0
 offset_bottom = -40.0
 grow_vertical = 0
 
-[node name="PointsLabel" type="Label" parent="UI/HSeparator"]
+[node name="PointsLabel" type="Label" parent="UI/Labels"]
 layout_mode = 2
 offset_top = 4.0
 offset_right = 120.0
@@ -562,7 +1175,7 @@ theme = ExtResource("7_t471f")
 text = "POINTS"
 script = ExtResource("14_4dami")
 
-[node name="SoulsLabel" type="Label" parent="UI/HSeparator"]
+[node name="SoulsLabel" type="Label" parent="UI/Labels"]
 layout_mode = 2
 offset_top = 60.0
 offset_right = 120.0
@@ -678,4 +1291,5 @@ volume_db = -12.0
 autoplay = true
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="UI/TutorialLabel/Timer" to="UI/TutorialLabel" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="UI/Overlay/AnimationPlayer" to="UI" method="_on_animation_player_animation_finished"]

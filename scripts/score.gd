@@ -13,8 +13,8 @@ var souls_tween_lock = false
 var tween_size = Vector2(1.25, 1.25)
 var tween_speed = 0.2
 
-@onready var points_label = $"../Scene/UI/HSeparator/PointsLabel"
-@onready var souls_label = $"../Scene/UI/HSeparator/SoulsLabel"
+@onready var points_label = $"../Scene/UI/Labels/PointsLabel"
+@onready var souls_label = $"../Scene/UI/Labels/SoulsLabel"
 
 func _set_souls_collected(new_value):
   souls_collected = new_value
