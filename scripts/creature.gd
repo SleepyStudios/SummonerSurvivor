@@ -19,11 +19,11 @@ func _ready() -> void:
 func _can_move() -> bool:
 	return not player.dead
 
-func on_hit() -> void:
+func on_hit(amount: int) -> void:
 	if dead:
 		return
 
-	health -= 1
+	health -= amount
 	if health < 1:
 		on_death()
 

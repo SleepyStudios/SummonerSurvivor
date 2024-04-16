@@ -82,11 +82,11 @@ func _on_dash_timer_timeout() -> void:
 func _on_dash_cooldown_timer_timeout() -> void:
 	can_dash = true
 
-func on_hit() -> void:
+func on_hit(amount: int = 1) -> void:
 	if dead:
 		return
 
-	health -= 1
+	health -= amount
 	if health < 1:
 		dead = true
 		ui.on_player_death()

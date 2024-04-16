@@ -7,7 +7,7 @@ enum SEARCH_GROUP {
 	ENEMY
 }
 
-signal on_hit
+signal on_hit(amount: int)
 @export var search_group: SEARCH_GROUP
 @export var does_physical_damage = true
 @export var takes_physical_damage = true
@@ -40,7 +40,7 @@ func _on_hitbox_exited(area: Area2D) -> void:
 		colliding_with_hitboxes = colliding_with_hitboxes.filter(func (a): return a != area)
 
 func handle_hit(amount: int = 1) -> void:
-	on_hit.emit()
+	on_hit.emit(amount)
 	health_bar.health -= amount
 
 func _process(delta: float) -> void:
@@ -48,5 +48,8 @@ func _process(delta: float) -> void:
 	if tmr_hit >= 0.5:
 		for hitbox in colliding_with_hitboxes:
 			handle_hit(hitbox.damage)
+
+			if hitbox.is_in_group("sword"):
+				hitbox.get_parent().on_death()
 
 		tmr_hit = 0

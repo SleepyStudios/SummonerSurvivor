@@ -26,7 +26,7 @@ z_index = 3
 scale = Vector2(4, 4)
 texture = ExtResource("2_pnr1m")
 
-[node name="Hitbox" parent="." instance=ExtResource("4_t6wte")]
+[node name="Hitbox" parent="." groups=["sword"] instance=ExtResource("4_t6wte")]
 position = Vector2(-1, -30)
 search_group = 1
 takes_physical_damage = false
@@ -46,7 +46,5 @@ sprite = NodePath("../Sprite2D")
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_xky54")
 volume_db = -10.0
-
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 
 [editable path="Hitbox"]

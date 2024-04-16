@@ -39,11 +39,11 @@ func _find_closest_enemy() -> Variant:
 
 	return closest_enemy
 
-func on_hit() -> void:
+func on_hit(amount: int = 1) -> void:
 	if dead:
 		return
 
-	health -= 1
+	health -= amount
 	if health < 1:
 		on_death()
 
