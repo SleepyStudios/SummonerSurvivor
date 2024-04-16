@@ -1,4 +1,3 @@
-@tool
 class_name RadialMenu extends Node2D
 
 @onready var player: Player = $"../Player"
@@ -28,6 +27,9 @@ func _scroll(dir: int):
 	can_scroll = false
 
 func _unhandled_input(event: InputEvent):
+	if not visible:
+		return
+
 	if event is InputEventPanGesture and can_scroll:
 		if event.delta.y < 0:
 			_scroll(-1)
@@ -44,25 +46,22 @@ func _toggle_current_scroll_idx_button() -> void:
 	get_children()[scroll_idx % get_children().size()].toggle()
 
 func _physics_process(_delta: float) -> void:
-	if not Engine.is_editor_hint():
-		position = get_global_mouse_position()
+	position = get_global_mouse_position()
 
 func _process(delta: float) -> void:	
-	if Engine.is_editor_hint():
-		var idx = 0
-		for pos in arrange_in_circle(get_children().size(), RADIUS):
-			get_children()[idx].position = pos
-			idx += 1
-
-	if not Engine.is_editor_hint():
-		if Input.is_action_just_pressed("open_summon_menu"):
-			visible = not visible
-
-		if Input.is_action_just_pressed("choose_summon") and visible:
-			get_children()[scroll_idx % get_children().size()].press()
-			
+	if Input.is_action_just_pressed("open_summon_menu"):
+		visible = not visible
 		if visible:
-			tmr_can_scroll += delta
-			if tmr_can_scroll >= 0.4:
-				can_scroll = true
-				tmr_can_scroll = 0
+			var idx = 0
+			for pos in arrange_in_circle(get_children().size(), RADIUS):
+				get_children()[idx].position = pos
+				idx += 1
+		
+	if visible:
+		if Input.is_action_just_pressed("choose_summon"):
+			get_children()[scroll_idx % get_children().size()].press()
+
+		tmr_can_scroll += delta
+		if tmr_can_scroll >= 0.4:
+			can_scroll = true
+			tmr_can_scroll = 0
