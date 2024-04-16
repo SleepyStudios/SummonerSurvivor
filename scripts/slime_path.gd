@@ -16,8 +16,8 @@ func _process(delta):
 
 func _on_timer_timeout() -> void:
   var tween = get_tree().create_tween()
-  tween.tween_property($Sprite2D, "modulate", Color.TRANSPARENT, 0.35).set_trans(Tween.TRANS_LINEAR)
-  tween.tween_property($Sprite2D, "scale", Vector2.ZERO, 0.45).set_trans(Tween.TRANS_LINEAR)
+  tween.parallel().tween_property($Sprite2D, "scale", Vector2.ZERO, 1.5).set_trans(Tween.TRANS_LINEAR)
+  tween.parallel().tween_property($Sprite2D, "modulate", Color.TRANSPARENT, 1.0).set_trans(Tween.TRANS_LINEAR)
   tween.tween_callback(queue_free)
 
 func _on_area_entered(area: Area2D) -> void:

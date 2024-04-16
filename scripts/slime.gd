@@ -14,7 +14,7 @@ func on_death() -> void:
   super()
 
   var tween = get_tree().create_tween()
-  tween.tween_property(sprite, "scale", Vector2.ZERO, 0.35).set_trans(Tween.TRANS_LINEAR)
+  tween.tween_property(sprite, "scale", Vector2.ZERO, 0.4).set_trans(Tween.TRANS_LINEAR)
   tween.tween_callback(queue_free)
 
 func _on_path_timer_timeout() -> void:

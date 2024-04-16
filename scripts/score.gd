@@ -13,9 +13,6 @@ var souls_tween_lock = false
 var tween_size = Vector2(1.25, 1.25)
 var tween_speed = 0.2
 
-@onready var points_label = $"../Scene/UI/Labels/PointsLabel"
-@onready var souls_label = $"../Scene/UI/Labels/SoulsLabel"
-
 func _set_souls_collected(new_value):
   souls_collected = new_value
   _create_souls_tween()
@@ -44,6 +41,12 @@ func get_current_score() -> int:
 func get_final_score() -> int:
   return base_calculation() + get_time_bonus()
 
+func get_points_label() -> Label:
+  return $"../Scene/UI/Labels/PointsLabel"
+
+func get_souls_label() -> Label:
+  return $"../Scene/UI/Labels/SoulsLabel"
+
 func _create_score_tween():
   if score_tween_lock:
     return
@@ -51,27 +54,28 @@ func _create_score_tween():
   score_tween_lock = true
 
   var tween = get_tree().create_tween()
-  tween.tween_property(points_label, "scale", tween_size, tween_speed).set_trans(Tween.TRANS_LINEAR)
+  tween.tween_property(get_points_label(), "scale", tween_size, tween_speed).set_trans(Tween.TRANS_LINEAR)
   tween.tween_callback(_reset_score_tween)
 
 func _reset_score_tween():
   var tween = get_tree().create_tween()
-  tween.tween_property(points_label, "scale", Vector2.ONE, tween_speed).set_trans(Tween.TRANS_LINEAR)
+  tween.tween_property(get_points_label(), "scale", Vector2.ONE, tween_speed).set_trans(Tween.TRANS_LINEAR)
   tween.tween_callback(func (): score_tween_lock = false)
 
 func _create_souls_tween():
+  pass
   if souls_tween_lock:
     return
 
   souls_tween_lock = true
 
   var tween = get_tree().create_tween()
-  tween.tween_property(souls_label, "scale", tween_size, tween_speed).set_trans(Tween.TRANS_LINEAR)
+  tween.tween_property(get_souls_label(), "scale", tween_size, tween_speed).set_trans(Tween.TRANS_LINEAR)
   tween.tween_callback(_reset_souls_tween)
 
 func _reset_souls_tween():
   var tween = get_tree().create_tween()
-  tween.tween_property(souls_label, "scale", Vector2.ONE, tween_speed).set_trans(Tween.TRANS_LINEAR)
+  tween.tween_property(get_souls_label(), "scale", Vector2.ONE, tween_speed).set_trans(Tween.TRANS_LINEAR)
   tween.tween_callback(func (): souls_tween_lock = false)
 
 func reset():
